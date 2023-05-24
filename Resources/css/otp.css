@@ -1,23 +1,98 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f5f5f5;
-  }
-  .header {
-    background: transparent linear-gradient(180deg, #211F1F 0%, #3B3939 100%) 0% 0% no-repeat padding-box;
-    opacity: 1;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  .subheader {
-    top: 160px;
-    left: 0px;
-    width: 1920px;
-    height: 20px;
-    background: #FE077C 0% 0% no-repeat padding-box;
-    opacity: 1;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+}
+.header {
+  background: transparent linear-gradient(180deg, #211F1F 0%, #3B3939 100%) 0% 0% no-repeat padding-box;
+  opacity: 1;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+.subheader {
+  top: 160px;
+  left: 0px;
+  width: 1920px;
+  height: 20px;
+  background: #FE077C 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100vh;
+  margin-top: 70px;
+}
 
-  
+.card{
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.2);
+  width: 350px;
+}
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 36px;
+  text-align: center;
+}
+.card p {
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: center;
+}
+.card input[type="text"] {
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+}
+.card input[type="submit"] {
+  background-color: #FE077C;
+  width: 100%;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.card input[type="submit"]:hover {
+  background-color: #f977b2;
+}
+
+button{
+  background-color: #FE077C;
+    width: 100%;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+button:hover{
+  background-color: #f977b2;
+}
+
+.card .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.card .options a {
+  color: #FE077C;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.card .options a:hover {
+  color: #f977b2;
+}

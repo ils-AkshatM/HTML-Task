@@ -6,12 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Resources/css/otp.css">
     <title>Otp</title>
+    <script>
+        function verifyOTP() {
+            // Get the entered OTP from the input field
+            var enteredOTP = document.getElementById("enteredOTP").value;
+            
+            if (enteredOTP === "123456") {
+                alert("OTP verification successful!");
+            } else {
+                alert("Invalid OTP! Please try again.");
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="header">
         <img src="./Resources/assets/UEP copy.png" alt="Logo">
       </div>
       <div class="subheader"></div>
+    <div class="container">
+        <div class="card">
+            <h2>Please Enter OTP</h2>
+            <p>Please enter the one time password we sent on your email uepadmin@uep.com (change)</p>
     
+            <input type="text" id="enteredOTP" placeholder="Enter OTP">
+            <br><br>
+            
+            <button onclick="verifyOTP()">Next</button>
+            <div class="options">
+                <a href="#">Go Back</a>
+                <a href="#">Resend OTP</a>
+              </div>
+        </div>
+        
+    </div>
 </body>
 </html>
+
+    
+   
