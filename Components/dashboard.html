@@ -1,19 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Resources/css/dashboard.css">
-    <title>Dashboard</title>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <title>Dashboard</title>
+  <script>
+    // Check if the user is already logged in
+    function checkLoggedIn() {
+      // Implement your logic to check if the user is logged in
+      // For example, you can use session storage, cookies, or a server-side check
+      var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+      if (!isLoggedIn) {
+        // Redirect to the login page if the user is not logged in
+        window.location.href = "login.html";
+      }
+    }
+
+    // Handle logout
+    function handleLogout() {
+      // Clear the user login state (for demonstration purposes)
+      sessionStorage.removeItem("isLoggedIn");
+
+      // Redirect to the login page
+      window.location.href = "login.html";
+    }
+
+    // Execute the checkLoggedIn function on page load
+    window.addEventListener("load", checkLoggedIn);
+  </script>
 </head>
 <body>
-    <section id="menu">
-        <div class="logo">
-            <img src="../Resources/assets/UEP copy.png" alt="UEPVIEWER">
+  <div class="navbar">
+    <div class="navbar-logo">
+        <img src="../Resources/assets/UEP copy.png" alt="UEPViewer">
+    </div>
+    <div class="navbar-right">
+      <div class="notification-icon">
+        <img src="../Resources/assets/Notification.png" alt="Notification Icon">
+      </div>
+      <div class="profile-dropdown">
+        <img src="../Resources/assets/Oval.png" alt="Profile Image">
+        <div class="dropdown-content">
+          <a href="./updatepasword.html">Update Profile</a>
+          <a href="./login.html" onclick="handleLogout()">Logout</a>
         </div>
-        <div class="items">
+      </div>
+    </div>
+  </div>
+  
+  <div class="sidenav">
+    <div id="menu">
             <li><i class="fad fa-chart-pie-alt"></i><a href="#">Reports</a></li>
             <li><i class="fab fa-uikit"></i><a href="#">Files</a></li>
             <li><i class="fas fa-th-large"></i><a href="#">Events</a></li>
@@ -22,24 +59,57 @@
             <li><i class="fas fa-hamburger"></i><a href="#">Producers</a></li>
             <li><i class="fas fa-chart-line"></i><a href="#">Orders</a></li>
             <li><i class="fas fa-chart-line"></i><a href="#">Zendesk Chat</a></li>
+    </div>
+  </div>
+  
+  <div class="dashboard-content">
+    <h2>Report</h2>
+  
+    <div class="number-cards">
+      <div class="card">
+        <h2>13,000</h2>
+        <p>Total Customers</p>
+      </div>
+      <div class="card">
+        <h2>40M</h2>
+        <p>Images Download</p>
+      </div>
+      <div class="card">
+        <h2>10M</h2>
+        <p>Videos Downloaded</p>
+      </div>
+      <div class="card">
+        <h2>1200</h2>
+        <p>Event Created</p>
+      </div>
+      <div class="card">
+        <h2>150</h2>
+        <p>Sales Report Count</p>
+      </div>
+    </div>
+  
+    <h2>Visual Reports</h2>
+  
+    <div class="reports-container">
+      <div class="pie-chart">
+        <img src="../Resources/assets/pie-chart.png" alt="Pie-Chart">
+      </div>
+    
+      <div class="graphs">
+        <div class="graph">
+          <img src="../Resources/assets/g1.png" alt="g1">
         </div>
-
-    </section>
-
-    <section id="interface">
-        <div class="navigation">
-            <div class="n1">
-                <div class="search">
-                    <i class="far fa-search"></i>
-                    <input type="text" placeholder="Search">
-                </div>
-            </div>
-            <div class="profile">
-                <i class="far fa-bell"></i>
-                <img src="../Resources/assets/Oval@2x.png" alt="profile">
-            </div>
+        <div class="graph">
+          <img src="../Resources/assets/g2.png" alt="g2">
         </div>
-
-    </section>
+        <div class="graph">
+          <img src="../Resources/assets/g3.png" alt="g3">
+        </div>
+        <div class="graph">
+          <img src="../Resources/assets/g4.png" alt="g4">
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
