@@ -11,6 +11,10 @@ body {
   padding: 20px;
   text-align: center;
 }
+.header img{
+  width: 215px;
+  height: 56px;
+}
 .subheader {
   top: 160px;
   left: 0px;

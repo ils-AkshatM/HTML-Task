@@ -17,6 +17,12 @@ body {
 .navbar-logo {
   font-weight: bold;
   margin-left: 70px;
+  padding: 10px;
+}
+
+.navbar-logo img{
+  width: 215px;
+  height: 56px;
 }
 
 .navbar-right {
