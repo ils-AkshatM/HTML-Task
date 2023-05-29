@@ -1,89 +1,141 @@
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(180deg, #211F1F 0%, #3B3939 100%);
+  opacity: 1;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.header img {
+  width: 215px;
+  height: 56px;
+}
+
+/* Subheader */
+.subheader {
+  background: #FE077C;
+  opacity: 1;
+  height: 10px;
+}
+
+/* Login container */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-card {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.2);
+  width: 350px;
+}
+
+.login-card h2 {
+  margin-bottom: 10px;
+  font-size: 36px;
+  text-align: center;
+}
+
+.login-card p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"] {
+  width: 92%;
+  padding: 12px;
+  margin-bottom: 25px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+}
+
+.login-card input[type="text"]::placeholder,
+.login-card input[type="password"]::placeholder {
+  text-indent: 5px;
+}
+
+.login-card input[type="submit"] {
+  background-color: #FE077C;
+  width: 100%;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.login-card input[type="submit"]:hover {
+  background-color: #f977b2;
+}
+
+.login-card .options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.login-card .options label {
+  font-size: 14px;
+}
+
+.login-card .options a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-card .options a:hover {
+  color: #777;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  .header img {
+      width: 160px;
+      height: 42px;
   }
-  .header {
-    background: transparent linear-gradient(180deg, #211F1F 0%, #3B3939 100%) 0% 0% no-repeat padding-box;
-    opacity: 1;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-  }
-  .header img{
-    width: 215px;
-    height: 56px;
-  }
+
   .subheader {
-    top: 160px;
-    left: 0px;
-    width: 1920px;
-    height: 20px;
-    background: #FE077C 0% 0% no-repeat padding-box;
-    opacity: 1;
+      height: 5px;
   }
-  .login-container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    height: 100vh;
-    margin-top: 70px;
-  }
+}
+
+@media only screen and (max-width: 480px) {
   .login-card {
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 20px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.2);
-    width: 350px;
+      width: 90%;
   }
+
   .login-card h2 {
-    margin-bottom: 10px;
-    font-size: 36px;
-    text-align: center;
+      font-size: 24px;
   }
+
   .login-card p {
-    margin-bottom: 20px;
-    font-size: 14px;
-    text-align: center;
+      font-size: 12px;
   }
+
   .login-card input[type="text"],
   .login-card input[type="password"] {
-    width: 100%;
-    padding: 20px;
-    margin-bottom: 25px;
-    border: 1px solid #ccc;
-    border-radius: 25px;
+      padding: 10px;
+      margin-bottom: 20px;
   }
-  .login-card input[type="submit"] {
-    background-color: #FE077C;
-    width: 100%;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-  }
-  .login-card input[type="submit"]:hover {
-    background-color: #f977b2;
-  }
-  .login-card .options {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-    font-size: 14px;
-  }
-  .login-card .options label {
-    font-size: 14px;
-  }
-  .login-card .options a {
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  .login-card .options a:hover {
-    color: #777;
-  }
+}
