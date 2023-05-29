@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files Event</title>
+    <link rel="stylesheet" href="../Resources/css/files_event.css">
+    <script>
+      function handleFileUpload() {
+        console.log("File uploaded");
+      }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-logo">
+            <img src="../Resources/assets/UEP copy.png" alt="UEPViewer">
+        </div>
+        <div class="navbar-right">
+          <div class="notification-icon">
+            <img src="../Resources/assets/Notification.png" alt="Notification Icon">
+          </div>
+          <div class="profile-dropdown">
+            <img src="../Resources/assets/Oval.png" alt="Profile Image">
+            <div class="dropdown-content">
+              <a href="./updatepasword.html">Update Profile</a>
+              <a href="./login.html" onclick="handleLogout()">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="sidenav">
+        <div id="menu">
+                <li><i class="fad fa-chart-pie-alt"></i><a href="#">Reports</a></li>
+                <li><i class="fab fa-uikit"></i><a href="#">Files</a></li>
+                <li><i class="fas fa-th-large"></i><a href="#">Events</a></li>
+                <li><i class="fas fa-edit"></i><a href="#">Customer Accounts</a></li>
+                <li><i class="fab fa-cc-visa"></i><a href="#">Staff</a></li>
+                <li><i class="fas fa-hamburger"></i><a href="#">Producers</a></li>
+                <li><i class="fas fa-chart-line"></i><a href="#">Orders</a></li>
+                <li><i class="fas fa-chart-line"></i><a href="#">Zendesk Chat</a></li>
+        </div>
+      </div>
+
+      <div class="dashboard-content">
+        <div class="dash-heading">
+          <h2>Files</h2>
+          <label for="fileUploadButton" class="upload-button">
+            <input type="file" id="fileUploadButton" class="hidden-input" onchange="handleFileUpload()">
+            Upload
+          </label>
+        </div>
+        <ul class="breadcrumb">
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Folders</a></li>
+          <li><a href="#">Party Hub Pass</a></li>
+          <li>Event Decoration</li>
+        </ul>
+      </div>
+</body>
+</html>
