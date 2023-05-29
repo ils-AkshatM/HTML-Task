@@ -3,12 +3,11 @@
 <head>
     <link rel="stylesheet" href="../Resources/css/dashboard.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Dashboard</title>
   <script>
     // Check if the user is already logged in
     function checkLoggedIn() {
-      // Implement your logic to check if the user is logged in
-      // For example, you can use session storage, cookies, or a server-side check
       var isLoggedIn = sessionStorage.getItem("isLoggedIn");
 
       if (!isLoggedIn) {
@@ -16,16 +15,12 @@
         window.location.href = "login.html";
       }
     }
-
     // Handle logout
     function handleLogout() {
-      // Clear the user login state (for demonstration purposes)
       sessionStorage.removeItem("isLoggedIn");
-
       // Redirect to the login page
       window.location.href = "login.html";
     }
-
     // Execute the checkLoggedIn function on page load
     window.addEventListener("load", checkLoggedIn);
   </script>
@@ -43,7 +38,7 @@
         <img src="../Resources/assets/Oval.png" alt="Profile Image">
         <div class="dropdown-content">
           <a href="./updatepasword.html">Update Profile</a>
-          <a href="./login.html" onclick="handleLogout()">Logout</a>
+          <a href="../index.html" onclick="handleLogout()">Logout</a>
         </div>
       </div>
     </div>
@@ -51,20 +46,22 @@
   
   <div class="sidenav">
     <div id="menu">
-            <li><i class="fad fa-chart-pie-alt"></i><a href="#">Reports</a></li>
-            <li><i class="fab fa-uikit"></i><a href="#">Files</a></li>
-            <li><i class="fas fa-th-large"></i><a href="#">Events</a></li>
-            <li><i class="fas fa-edit"></i><a href="#">Customer Accounts</a></li>
-            <li><i class="fab fa-cc-visa"></i><a href="#">Staff</a></li>
-            <li><i class="fas fa-hamburger"></i><a href="#">Producers</a></li>
-            <li><i class="fas fa-chart-line"></i><a href="#">Orders</a></li>
-            <li><i class="fas fa-chart-line"></i><a href="#">Zendesk Chat</a></li>
+      <ul>
+        <li><i class="fad fa-chart-pie-alt"></i><a href="#">Reports</a></li>
+        <li><i class="fab fa-uikit"></i><a href="#">Files</a></li>
+        <li><i class="fas fa-th-large"></i><a href="#">Events</a></li>
+        <li><i class="fas fa-edit"></i><a href="#">Customer Accounts</a></li>
+        <li><i class="fab fa-cc-visa"></i><a href="#">Staff</a></li>
+        <li><i class="fas fa-hamburger"></i><a href="#">Producers</a></li>
+        <li><i class="fas fa-chart-line"></i><a href="#">Orders</a></li>
+        <li><i class="fas fa-chart-line"></i><a href="#">Zendesk Chat</a></li>
+      </ul>
     </div>
   </div>
+
   
   <div class="dashboard-content">
     <h2>Report</h2>
-  
     <div class="number-cards">
       <div class="card">
         <h2>13,000</h2>
@@ -92,21 +89,99 @@
   
     <div class="reports-container">
       <div class="pie-chart">
-        <img src="../Resources/assets/pie-chart.png" alt="Pie-Chart">
+        <canvas id="pieChart"></canvas>
+        
+        <script>
+       // pie-Chart
+        var ctx = document.getElementById('pieChart').getContext('2d');
+
+        // Create the chart data
+        var data = {
+        labels: ['Party Hub Pass', 'Disco Dancer', 'Sparkling Nights'],
+        datasets: [{
+        data: [60, 58, 55],
+        backgroundColor: ['#F0582F', '#6EB1E1', '#71D456'],
+        borderWidth: 10,
+        }]
+        };
+
+        // Create the pie chart
+        var myPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: data,
+        options: {
+        plugins: {
+          datalabels: {
+            color: 'white',
+            font: {
+              weight: 'bold'
+            },
+            formatter: function(value, context) {
+              return context.chart.data.labels[context.dataIndex] + ': ' + value + '%';
+            }
+          }
+        }
+      } 
+        });
+        </script>
       </div>
     
       <div class="graphs">
         <div class="graph">
-          <img src="../Resources/assets/g1.png" alt="g1">
+          <h3>All Downloads</h3>
+          <svg class="chart" viewBox="0 0 500 300">
+            <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
+            <circle class="chart-point" cx="50" cy="250" r="4" />
+            <circle class="chart-point" cx="150" cy="180" r="4" />
+            <circle class="chart-point" cx="250" cy="220" r="4" />
+            <circle class="chart-point" cx="350" cy="250" r="4" />
+            <text x="45" y="265" dy="5">Jan</text>
+            <text x="145" y="265" dy="5">Feb</text>
+            <text x="245" y="265" dy="5">Mar</text>
+            <text x="345" y="265" dy="5">Apr</text>
+        </svg>
         </div>
         <div class="graph">
-          <img src="../Resources/assets/g2.png" alt="g2">
+          <h3>Image Downloads</h3>
+          <svg class="chart" viewBox="0 0 500 300">
+            <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
+            <circle class="chart-point" cx="50" cy="250" r="4" />
+            <circle class="chart-point" cx="150" cy="180" r="4" />
+            <circle class="chart-point" cx="250" cy="220" r="4" />
+            <circle class="chart-point" cx="350" cy="250" r="4" />
+            <text x="45" y="265" dy="5">Jan</text>
+            <text x="145" y="265" dy="5">Feb</text>
+            <text x="245" y="265" dy="5">Mar</text>
+            <text x="345" y="265" dy="5">Apr</text>
+        </svg>
         </div>
         <div class="graph">
-          <img src="../Resources/assets/g3.png" alt="g3">
+          <h3>Video Downloads</h3>
+          <svg class="chart" viewBox="0 0 500 300">
+            <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
+            <circle class="chart-point" cx="50" cy="250" r="4" />
+            <circle class="chart-point" cx="150" cy="180" r="4" />
+            <circle class="chart-point" cx="250" cy="220" r="4" />
+            <circle class="chart-point" cx="350" cy="250" r="4" />
+            <text x="45" y="265" dy="5">Jan</text>
+            <text x="145" y="265" dy="5">Feb</text>
+            <text x="245" y="265" dy="5">Mar</text>
+            <text x="345" y="265" dy="5">Apr</text>
+        </svg>
         </div>
         <div class="graph">
-          <img src="../Resources/assets/g4.png" alt="g4">
+          <h3>Event Creation</h3>
+          <svg class="chart" viewBox="0 0 500 300">
+            <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
+            <circle class="chart-point" cx="50" cy="250" r="4" />
+            <circle class="chart-point" cx="150" cy="180" r="4" />
+            <circle class="chart-point" cx="250" cy="220" r="4" />
+            <circle class="chart-point" cx="350" cy="250" r="4" />
+            <text x="45" y="265" dy="5">Jan</text>
+            <text x="145" y="265" dy="5">Feb</text>
+            <text x="245" y="265" dy="5">Mar</text>
+            <text x="345" y="265" dy="5">Apr</text>
+        </svg>
         </div>
       </div>
     </div>

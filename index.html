@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script>
-        function showPage(page) {
-            var content = document.getElementById('content');
-            
-            if (page === 'home') {
-                content.innerHTML = 'This is the Home page.';
-            } else if (page === 'about') {
-                content.innerHTML = 'This is the About page.';
-            } else if (page === 'contact') {
-                content.innerHTML = 'This is the Contact page.';
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', function() {
-            var path = window.location.pathname;
-            var page = path.split('/').pop();
-
-            showPage(page);
-        });
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Login</title>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="./Components/login.html">Home</a></li>
-        </ul>
-    </nav>
-    
-    <div id="content"></div>
+    <div class="header">
+        <img src="./Resources/assets/UEP copy.png" alt="Logo">
+    </div>
+    <div class="subheader"></div>
+    <div class="login-container">
+        <div class="login-card">
+            <h2><b>Login</b></h2>
+            <p>Please enter your email id and password</p>
+            <form id="loginForm" onsubmit="handleFormSubmit(event)" method="post">
+                <input type="text" name="username" placeholder="Email" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <div class="options">
+                    <label><input type="checkbox" name="remember"> Remember Me</label>
+                    <a href="./Components/forgotpassword.html">Forgot Password?</a>
+                </div><br>
+                <input type="submit" value="Login">
+            </form>
+
+            <script>
+                // Check if the user is already logged in
+                function checkLoggedIn() {
+                    var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+                    if (isLoggedIn) {
+                        // Redirect to the dashboard if the user is already logged in
+                        window.location.href = "./Components/dashboard.html";
+                    }
+                }
+
+                function handleFormSubmit(event) {
+                    event.preventDefault();
+                    // Set the user as logged in (for demonstration purposes)
+                    sessionStorage.setItem("isLoggedIn", true);
+
+                    // Redirect to the dashboard
+                    window.location.href = "./Components/dashboard.html";
+                }
+
+                // Execute the checkLoggedIn function on page load
+                window.addEventListener("load", checkLoggedIn);
+            </script>
+        </div>
+    </div>
 </body>
 </html>
