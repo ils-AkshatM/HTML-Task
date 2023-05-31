@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="../Resources/css/dashboard.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Dashboard</title>
   <script>
@@ -12,14 +13,14 @@
 
       if (!isLoggedIn) {
         // Redirect to the login page if the user is not logged in
-        window.location.href = "login.html";
+        window.location.href = "../index.html";
       }
     }
     // Handle logout
     function handleLogout() {
       sessionStorage.removeItem("isLoggedIn");
       // Redirect to the login page
-      window.location.href = "login.html";
+      window.location.href = "../index.html";
     }
     // Execute the checkLoggedIn function on page load
     window.addEventListener("load", checkLoggedIn);
@@ -47,14 +48,14 @@
   <div class="sidenav">
     <div id="menu">
       <ul>
-        <li><i class="fad fa-chart-pie-alt"></i><a href="#">Reports</a></li>
-        <li><i class="fab fa-uikit"></i><a href="#">Files</a></li>
-        <li><i class="fas fa-th-large"></i><a href="#">Events</a></li>
-        <li><i class="fas fa-edit"></i><a href="#">Customer Accounts</a></li>
-        <li><i class="fab fa-cc-visa"></i><a href="#">Staff</a></li>
-        <li><i class="fas fa-hamburger"></i><a href="#">Producers</a></li>
-        <li><i class="fas fa-chart-line"></i><a href="#">Orders</a></li>
-        <li><i class="fas fa-chart-line"></i><a href="#">Zendesk Chat</a></li>
+        <li><i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a></li>
+        <li><i class="ri-image-2-fill"></i><a href="./files_event.html">Files</a></li>
+        <li><i class="ri-calendar-2-line"></i><a href="#">Events</a></li>
+        <li><i class="ri-team-fill"></i><a href="#">Customer Accounts</a></li>
+        <li><i class="ri-user-5-fill"></i><a href="#">Staff</a></li>
+        <li><i class="ri-user-3-fill"></i><a href="#">Producers</a></li>
+        <li><i class="ri-list-unordered"></i><a href="#">Orders</a></li>
+        <li><i class="ri-chat-new-fill"></i><a href="#">Zendesk Chat</a></li>
       </ul>
     </div>
   </div>
