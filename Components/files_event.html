@@ -13,6 +13,25 @@
         console.log("File uploaded");
       }
     </script>
+    <script>
+      // Check if the user is already logged in
+      function checkLoggedIn() {
+        var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+  
+        if (!isLoggedIn) {
+          // Redirect to the login page if the user is not logged in
+          window.location.href = "../index.html";
+        }
+      }
+      // Handle logout
+      function handleLogout() {
+        sessionStorage.removeItem("isLoggedIn");
+        // Redirect to the login page
+        window.location.href = "../index.html";
+      }
+      // Execute the checkLoggedIn function on page load
+      window.addEventListener("load", checkLoggedIn);
+    </script>
 </head>
 <body>
     <div class="navbar">
@@ -27,7 +46,7 @@
             <img src="../Resources/assets/Oval.png" alt="Profile Image">
             <div class="dropdown-content">
               <a href="./updatepasword.html">Update Profile</a>
-              <a href="./login.html" onclick="handleLogout()">Logout</a>
+              <a href="../index.html" onclick="handleLogout()">Logout</a>
             </div>
           </div>
         </div>
@@ -35,14 +54,16 @@
       
       <div class="sidenav">
         <div id="menu">
+              <ul>
                 <li><i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a></li>
-                <li><i class="ri-image-2-fill"></i><a href="./files_event.html">Files</a></li>
+                <li class="current active"><i class="ri-image-2-fill"></i><a href="./files_event.html">Files</a></li>
                 <li><i class="ri-calendar-2-line"></i><a href="#">Events</a></li>
                 <li><i class="ri-team-fill"></i><a href="#">Customer Accounts</a></li>
                 <li><i class="ri-user-5-fill"></i><a href="#">Staff</a></li>
                 <li><i class="ri-user-3-fill"></i><a href="#">Producers</a></li>
                 <li><i class="ri-list-unordered"></i><a href="#">Orders</a></li>
                 <li><i class="ri-chat-new-fill"></i><a href="#">Zendesk Chat</a></li>
+              </ul>
         </div>
       </div>
 

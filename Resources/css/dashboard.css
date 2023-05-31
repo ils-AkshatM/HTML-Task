@@ -95,9 +95,9 @@ body {
   width: 250px;
 }
 
-#menu li:nth-child(1) {
+/* #menu li:nth-child(1) {
   border-left: 4px solid #FE077C;
-}
+} */
 
 #menu li i {
   color: rgb(0, 0, 0);
@@ -119,6 +119,17 @@ body {
   color: rgb(0,0,0);
   font-weight: 300px;
   transition: 0.3s ease;
+}
+#menu ul .current.active {
+  border-left: 2px #FE077C solid;
+}
+
+#menu ul .current.active a {
+  color: #FE077C;
+}
+
+#menu ul .current.active i {
+  color: #FE077C;
 }
 
 /* Responsive Styles */

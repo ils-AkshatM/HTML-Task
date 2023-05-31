@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Resources/css/customalert.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="customAlert" class="custom-alert">
+        <div class="header">
+          <h2 id="fileName"></h2>
+          <span class="close-icon" onclick="closeCustomAlert()">&times;</span>
+        </div>
+        <img id="image" src="https://picsum.photos/600/600" alt="Image">
+        <ul class="breadcrumb">
+          <li><a id="breadcrumbText" href="#">Event</a></li>
+          <li><a id="breadcrumbText" href="#">Routines </a></li>
+          <li><a id="breadcrumbText" href="#">Files</a></li>
+          <li><a id="breadcrumbText" href="#">Forest Beauty Nanital.jpg</a></li>
+        </ul>
+        <div class="actions">
+          <!-- <button id="downloadButton">Download</button> -->
+          <a href="#" id="downloadButton"><i class="ri-download-2-fill"></i></a>
+          <a href="#" id="deleteButton"><i class="ri-delete-bin-7-fill"></i></a>
+          <!-- <button id="deleteButton">Delete</button> -->
+        </div>
+        <div class="details">
+          <span id="downloadCount"></span>
+          <span id="productCount"></span>
+        </div>
+        <div class="comments">
+          <p id="commentsText"></p>
+        </div>
+        <div class="footer">
+          <p id="creationDate"></p>
+        </div>
+      </div>
+      
+      <script>
+      // Function to show the custom alert box
+      function showCustomAlert(fileName, imageUrl, breadcrumb, downloadCount, productCount, comments, creationDate) {
+        var alertBox = document.getElementById('customAlert');
+        var fileNameElement = document.getElementById('fileName');
+        var imageElement = document.getElementById('image');
+        var breadcrumbElement = document.getElementById('breadcrumbText');
+        var downloadButton = document.getElementById('downloadButton');
+        var deleteButton = document.getElementById('deleteButton');
+        var downloadCountElement = document.getElementById('downloadCount');
+        var productCountElement = document.getElementById('productCount');
+        var commentsElement = document.getElementById('commentsText');
+        var creationDateElement = document.getElementById('creationDate');
+      
+        fileNameElement.textContent = fileName;
+        imageElement.src = imageUrl;
+        // breadcrumbElement.textContent = breadcrumb;
+        downloadCountElement.textContent = 'Download Count: ' + downloadCount;
+        productCountElement.textContent = 'Product Count: ' + productCount;
+        commentsElement.textContent = comments;
+        creationDateElement.textContent = 'Created on: ' + creationDate;
+      
+        alertBox.style.display = 'block';
+      }
+      
+      // Function to close the custom alert box
+      function closeCustomAlert() {
+        var alertBox = document.getElementById('customAlert');
+        alertBox.style.display = 'none';
+      }
+        
+      // Example usage with dummy data
+      showCustomAlert(
+        'Example File',
+        'https://picsum.photos/600/400',
+        'Event > Routines > Files > Forest Beauty Nanital.jpg',
+        10,
+        5,
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec ligula eu elit iaculis lacinia. In hac habitasse platea dictumst.',
+        'May 31, 2023'
+      );
+      </script>
+      
+</body>
+</html>
