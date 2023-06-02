@@ -16,8 +16,8 @@
             <h2><b>Login</b></h2>
             <p>Please enter your email id and password</p>
             <form id="loginForm" onsubmit="handleFormSubmit(event)" method="post">
-                <input type="text" name="username" placeholder="Email" required><br>
-                <input type="password" name="password" placeholder="Password" required><br>
+                <input type="text" name="username" placeholder="Email" id="emailInput" required><br>
+                <input type="password" name="password" placeholder="Password" id="passwordInput" required><br>
                 <div class="options">
                     <label><input type="checkbox" name="remember"> Remember Me</label>
                     <a href="./Components/forgotpassword.html">Forgot Password?</a>
@@ -26,6 +26,39 @@
             </form>
 
             <script>
+                function validateEmail(email) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return emailRegex.test(email);
+                }
+
+                function validatePassword(password) {
+                    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
+                    return passwordRegex.test(password);
+                }
+
+                function handleFormSubmit(event) {
+                    event.preventDefault();
+                    
+                    const email = document.getElementById("emailInput").value;
+                    const password = document.getElementById("passwordInput").value;
+
+                    if (!validateEmail(email)) {
+                        alert("Invalid email address.");
+                        return;
+                    }
+
+                    if (!validatePassword(password)) {
+                        alert("Invalid password. Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.");
+                        return;
+                    }
+
+                    // Set the user as logged in (for demonstration purposes)
+                    sessionStorage.setItem("isLoggedIn", true);
+
+                    // Redirect to the dashboard
+                    window.location.href = "./Components/dashboard.html";
+                }
+
                 // Check if the user is already logged in
                 function checkLoggedIn() {
                     var isLoggedIn = sessionStorage.getItem("isLoggedIn");
@@ -34,15 +67,6 @@
                         // Redirect to the dashboard if the user is already logged in
                         window.location.href = "./Components/dashboard.html";
                     }
-                }
-
-                function handleFormSubmit(event) {
-                    event.preventDefault();
-                    // Set the user as logged in (for demonstration purposes)
-                    sessionStorage.setItem("isLoggedIn", true);
-
-                    // Redirect to the dashboard
-                    window.location.href = "./Components/dashboard.html";
                 }
 
                 // Execute the checkLoggedIn function on page load
