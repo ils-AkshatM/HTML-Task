@@ -1,15 +1,15 @@
-
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #F3F4F9;
+  background-color: #f3f4f9;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  background: transparent linear-gradient(180deg, #211F1F 0%, #3B3939 100%) 0% 0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #211f1f 0%, #3b3939 100%) 0%
+    0% no-repeat padding-box;
   opacity: 1;
   padding: 10px;
 }
@@ -45,7 +45,7 @@ body {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   right: 0;
 }
@@ -67,10 +67,10 @@ body {
 
 .sidenav {
   width: 300px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 100%;
   position: absolute;
-  box-shadow: 0px 2px 14px #0000001A;;
+  box-shadow: 0px 2px 14px #0000001a;
 }
 
 #menu {
@@ -91,7 +91,7 @@ body {
 }
 
 #menu li:hover {
-  color: #FE077C;
+  color: #fe077c;
   cursor: pointer;
   width: 250px;
 }
@@ -112,54 +112,54 @@ body {
 
 #menu li:hover i,
 #menu li:hover a {
-  color: #FE077C;
+  color: #fe077c;
 }
 
 #menu li a {
   text-decoration: none;
-  color: rgb(0,0,0);
+  color: rgb(0, 0, 0);
   font-weight: 300px;
   transition: 0.3s ease;
 }
 #menu ul .current.active {
-  border-left: 2px #FE077C solid;
+  border-left: 2px #fe077c solid;
 }
 
 #menu ul .current.active a {
-  color: #FE077C;
+  color: #fe077c;
 }
 
 #menu ul .current.active i {
-  color: #FE077C;
+  color: #fe077c;
 }
 
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
   .navbar-logo {
-      margin-left: 20px;
+    margin-left: 20px;
   }
 
   .navbar-right {
-      margin-right: 20px;
+    margin-right: 20px;
   }
 
   .sidenav {
-      position: static;
-      width: 100%;
-      margin-top: 10px;
+    position: static;
+    width: 100%;
+    margin-top: 10px;
   }
 
   #menu {
-      margin-left: 0;
-      width: 100%;
+    margin-left: 0;
+    width: 100%;
   }
 
   #menu li {
-      padding: 10px 0;
+    padding: 10px 0;
   }
 
   #menu li i {
-      margin-left: 10px;
+    margin-left: 10px;
   }
 }
 
@@ -188,29 +188,32 @@ body {
 /* Adjust the side nav styles for smaller screens */
 @media screen and (max-width: 767px) {
   .sidenav {
-      display: none;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #f5f5f5;
-      z-index: 999;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5f5;
+    z-index: 999;
   }
 
   .hamburger-icon {
-      display: block;
+    display: block;
   }
 
   /* Show the side nav when the hamburger icon is clicked */
   .hamburger-icon.active + .sidenav {
-      display: block;
+    display: block;
   }
 }
 
 .dashboard-content {
   margin-left: 300px;
   padding: 20px;
+  height: 100vh;
+  overflow-y: scroll;
+
 }
 .dashboard-content h2 {
   margin-bottom: 10px;
@@ -223,13 +226,13 @@ body {
 }
 
 .card {
-  background: #FFFFFF 0% 0% no-repeat padding-box;
-  box-shadow: 0px 2px 12px #0000000F;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 2px 12px #0000000f;
   border-radius: 10px;
   opacity: 1;
   padding: 20px;
   flex-basis: calc(50% - 10px);
-  text-align: center;
+  text-align: left;
 }
 
 .card h3 {
@@ -250,31 +253,31 @@ body {
   flex-basis: 40%;
   top: 434px;
   left: 296px;
-  width: 686px;
-  height: 480px;
+  width: 40%;
+  height: 500px;
 }
-
-
 
 .graphs {
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 30px;
+  margin-bottom: 30px;
   /* top: 434px;
 left: 1022px;
 width: 359px;
 height: 220px; */
+width: 60%;
 }
 .graph {
   background-color: #fff;
   padding: 20px;
-  text-align: center;
+  text-align: left;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   flex-basis: calc(50% - 10px);
 }
 
-.graph h3{
+.graph h3 {
   text-align: left;
 }
 .chart {
@@ -291,4 +294,37 @@ height: 220px; */
 
 .chart-point {
   fill: #007bff;
+}
+
+
+@media screen and (max-width: 1024px) {
+  .number-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .reports-container {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+  }
+  .pie-chart {
+    width: 380px !important;
+    height: 380px !important;
+  }
+  .dashboard-content{
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .number-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .graphs {
+    display: flex;
+    flex-direction: column;
+  }
 }
