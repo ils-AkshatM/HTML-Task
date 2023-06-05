@@ -254,13 +254,13 @@ body {
   top: 434px;
   left: 296px;
   width: 40%;
-  height: 500px;
+  height: 90%;
 }
 
 .graphs {
   display: grid;
   grid-template-columns: auto auto;
-  grid-gap: 30px;
+  grid-gap: 20px;
   margin-bottom: 30px;
   /* top: 434px;
 left: 1022px;
@@ -281,8 +281,8 @@ width: 60%;
   text-align: left;
 }
 .chart {
-  width: 250px;
-  height: 150px;
+  width: 100%;
+  height: 200px;
   border: 1px solid #ccc;
 }
 
