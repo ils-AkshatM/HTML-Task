@@ -31,11 +31,15 @@
       }
       // Execute the checkLoggedIn function on page load
       window.addEventListener("load", checkLoggedIn);
+      function toggleSideNav() {
+      var sidenav = document.getElementById("sidenav");
+      sidenav.style.display = sidenav.style.display === "none" ? "block" : "none";
+    }
     </script>
 </head>
 <body>
     <div class="navbar">
-        <div class="navbar-logo">
+        <div class="navbar-logo" onclick="toggleSideNav()">
             <img src="../Resources/assets/UEP copy.png" alt="UEPViewer">
         </div>
         <div class="navbar-right">
@@ -52,7 +56,7 @@
         </div>
       </div>
       
-      <div class="sidenav">
+      <div class="sidenav" id="sidenav">
         <div id="menu">
               <ul>
                 <li><i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a></li>
