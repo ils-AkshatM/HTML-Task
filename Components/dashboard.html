@@ -365,59 +365,167 @@
                     <div class="grid grid-cols-2 gap-4 lg:w-1/2">
                         <div class="bg-white py-5 px-6 rounded shadow-md">
                             <h3 class="font-bold">All Downloads</h3>
-                            <svg class="chart" viewBox="0 0 500 300">
-                                <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
-                                <circle class="chart-point" cx="50" cy="250" r="4" />
-                                <circle class="chart-point" cx="150" cy="180" r="4" />
-                                <circle class="chart-point" cx="250" cy="220" r="4" />
-                                <circle class="chart-point" cx="350" cy="250" r="4" />
-                                <text x="45" y="265" dy="5">Jan</text>
-                                <text x="145" y="265" dy="5">Feb</text>
-                                <text x="245" y="265" dy="5">Mar</text>
-                                <text x="345" y="265" dy="5">Apr</text>
-                            </svg>
+                            <canvas id="myChart"></canvas>
+                            <script>
+                                // Create a line chart
+                                var ctx = document.getElementById('myChart').getContext('2d');
+                                var myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                        labels: ['Jan', 'Feb', 'Mar', 'Apr' ],
+                                        datasets: [{
+                                            label: 'Data',
+                                            data: [10, 15, 7, 12],
+                                            borderColor: '#FE077C',
+                                            fill: false,
+                                            tension: 0.5,
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true,
+                                                grid: {display:false},
+                                            },
+                                            x: {
+                                                grid: {display:false},
+                                            } 
+                                        },
+                                        plugins: {
+                                            datalabels: {
+                                                display:false,                                           }
+                                        },   
+                                        legends: {
+                                            display: false,
+                                        }
+                                    }
+
+                                });
+                            </script>
                         </div>
                         <div class="bg-white py-5 px-6 rounded shadow-md">
                             <h3 class="font-bold">Image Downloads</h3>
-                            <svg class="chart" viewBox="0 0 500 300">
-                                <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
-                                <circle class="chart-point" cx="50" cy="250" r="4" />
-                                <circle class="chart-point" cx="150" cy="180" r="4" />
-                                <circle class="chart-point" cx="250" cy="220" r="4" />
-                                <circle class="chart-point" cx="350" cy="250" r="4" />
-                                <text x="45" y="265" dy="5">Jan</text>
-                                <text x="145" y="265" dy="5">Feb</text>
-                                <text x="245" y="265" dy="5">Mar</text>
-                                <text x="345" y="265" dy="5">Apr</text>
-                            </svg>
+                            <canvas id="myChart1"></canvas>
+                            <script>
+                                // Create a line chart
+                                var ctx = document.getElementById('myChart1').getContext('2d');
+                                var myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                        labels: ['Jan', 'Feb', 'Mar', 'Apr' ],
+                                        datasets: [{
+                                            label: 'Data',
+                                            data: [10, 15, 7, 12],
+                                            borderColor: '#FE077C',
+                                            fill: false,
+                                            tension: 0.5,
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true,
+                                                grid: {display:false},
+                                            },
+                                            x: {
+                                                grid: {display:false},
+                                            } 
+                                        },
+                                        plugins: {
+                                            datalabels: {
+                                                display:false,                                           }
+                                        },   
+                                        legends: {
+                                            display: false,
+                                        }
+                                    }
+
+                                });
+                            </script>
                         </div>
                         <div class="bg-white py-5 px-6 rounded shadow-md">
                             <h3 class="font-bold">Video Downloads</h3>
-                            <svg class="chart" viewBox="0 0 500 300">
-                                <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
-                                <circle class="chart-point" cx="50" cy="250" r="4" />
-                                <circle class="chart-point" cx="150" cy="180" r="4" />
-                                <circle class="chart-point" cx="250" cy="220" r="4" />
-                                <circle class="chart-point" cx="350" cy="250" r="4" />
-                                <text x="45" y="265" dy="5">Jan</text>
-                                <text x="145" y="265" dy="5">Feb</text>
-                                <text x="245" y="265" dy="5">Mar</text>
-                                <text x="345" y="265" dy="5">Apr</text>
-                            </svg>
+                            <canvas id="myChart2"></canvas>
+                            <script>
+                                // Create a line chart
+                                var ctx = document.getElementById('myChart2').getContext('2d');
+                                var myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                        labels: ['Jan', 'Feb', 'Mar', 'Apr' ],
+                                        datasets: [{
+                                            label: 'Data',
+                                            data: [10, 15, 7, 12],
+                                            borderColor: '#FE077C',
+                                            fill: false,
+                                            tension: 0.5,
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true,
+                                                grid: {display:false},
+                                            },
+                                            x: {
+                                                grid: {display:false},
+                                            } 
+                                        },
+                                        plugins: {
+                                            datalabels: {
+                                                display:false,                                           }
+                                        },   
+                                        legends: {
+                                            display: false,
+                                        }
+                                    }
+
+                                });
+                            </script>
                         </div>
                         <div class="bg-white py-5 px-6 rounded border border-gray-300 shadow-md">
                           <h3 class="font-bold">Event Creation</h3>
-                            <svg class="chart" viewBox="0 0 500 300">
-                                <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
-                                <circle class="chart-point" cx="50" cy="250" r="4" />
-                                <circle class="chart-point" cx="150" cy="180" r="4" />
-                                <circle class="chart-point" cx="250" cy="220" r="4" />
-                                <circle class="chart-point" cx="350" cy="250" r="4" />
-                                <text x="45" y="265" dy="5">Jan</text>
-                                <text x="145" y="265" dy="5">Feb</text>
-                                <text x="245" y="265" dy="5">Mar</text>
-                                <text x="345" y="265" dy="5">Apr</text>
-                            </svg>
+                          <canvas id="myChart3"></canvas>
+                          <script>
+                              // Create a line chart
+                              var ctx = document.getElementById('myChart3').getContext('2d');
+                              var myChart = new Chart(ctx, {
+                                  type: 'line',
+                                  data: {
+                                      labels: ['Jan', 'Feb', 'Mar', 'Apr' ],
+                                      datasets: [{
+                                          label: 'Data',
+                                          data: [10, 17, 4, 1],
+                                          borderColor: '#FE077C',
+                                          fill: false,
+                                          tension: 0.5,
+                                      }]
+                                  },
+                                  options: {
+                                      responsive: true,
+                                      scales: {
+                                          y: {
+                                              beginAtZero: true,
+                                              grid: {display:false},
+                                          },
+                                          x: {
+                                              grid: {display:false},
+                                          } 
+                                      },
+                                      plugins: {
+                                          datalabels: {
+                                              display:false,                                           }
+                                      },   
+                                      legends: {
+                                          display: false,
+                                      }
+                                  }
+
+                              });
+                          </script>
                         </div>
                     </div>
                 </div>
