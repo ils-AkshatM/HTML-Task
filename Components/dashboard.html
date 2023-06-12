@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"></script>
     <title>Dashboard</title>
     <style>
         .sidebar {
@@ -156,7 +158,7 @@
                 <div>
                     <ul class="pt-10 flex flex-col gap-2">
                         <li
-                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-medium py-2 text-[18px] active">
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-medium py-2 active:text-pink-500 text-[18px]">
                             <i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a>
                         </li>
                         <li
@@ -261,49 +263,103 @@
 
                 <div class="grid grid-cols-1 lg:flex gap-4">
                     <div class="lg:w-1/2">
-                        <div class="pie-chart w-full">
+                        <div class="pie-chart w-full h-full">
                             <canvas id="pieChart" class="w-64 h-64"></canvas>
                           </div>                         
                           <script>
-                            // pie-Chart
-                            var ctx = document.getElementById("pieChart").getContext("2d");
-                          
-                            // Create the chart data
-                            var data = {
-                              labels: ["Party Hub Pass", "Disco Dancer", "Sparkling Nights"],
-                              datasets: [
-                                {
-                                  data: [60, 58, 55],
-                                  backgroundColor: ["#F0582F", "#6EB1E1", "#71D456"],
-                                  borderWidth: 10,
-                                },
-                              ],
+                            const txt_margin = 15;
+                            const ptx1 = document.getElementById('pieChart').getContext('2d');
+                            const pie_data = {
+                            labels: [
+                            'Party Hub Pass',
+                            'Disco Dancer',
+                            'Sparkling Nights',
+                            ],
+                            datasets: [{
+                            data: [120,120,120],
+                            label: 'My First Dataset',
+                            backgroundColor: [
+                            '#6EB1E1',
+                            '#71D456',
+                            "#F0582F",
+                            ],
+                            
+                            hoverOffset: 10
+                            }]
                             };
-                          
-                            // Create the pie chart
-                            var myPieChart = new Chart(ctx, {
-                              type: "pie",
-                              data: data,
-                              options: {
-                                plugins: {
-                                  datalabels: {
-                                    color: "white",
-                                    font: {
-                                      weight: "bold",
-                                    },
-                                    formatter: function (value, context) {
-                                      return (
-                                        context.chart.data.labels[context.dataIndex] +
-                                        ": " +
-                                        value +
-                                        "%"
-                                      );
-                                    },
-                                  },
-                                },
-                              },
+                            
+                            
+                             const myPieChart = new Chart(ptx1, {
+                            type: 'pie',
+                            data: pie_data,
+                            
+                            options: {
+                            
+                            offset:15,
+                            layout:{
+                            padding : 13.5,
+                            },
+                            
+                            maintainAspectRatio: false,
+                            plugins: {
+                            
+                            legend: {
+                            labels: {
+                            fontSize: 20, 
+                            fontColor: 'blue'
+                            },
+                            },
+                            
+                            labels: {
+                            render: (args) => {
+                            return args.value + ' mb';
+                            },
+                            fontSize: 14,
+                            position: 'inside',
+                            textMargin: txt_margin,
+                            },
+                            
+                            datalabels: {
+                            formatter: (value, ctx) => {
+                            
+                            const datapoints = ctx.chart.data.datasets[0].data
+                            const total = datapoints.reduce((total, datapoint) => total + datapoint, 0)
+                            const percentage = value / total * 100
+                            return percentage.toFixed(0) + "%";
+                            
+                            },
+                            color: '#fff', 
+                            font: {
+                            weight: '400',
+                            size: 14,
+                            },
+                            },
+                            legend: {
+                            display: true,
+                            position: 'right',
+                            align: "center",
+                            
+                            
+                            labels: {
+                            usePointStyle: true,
+                            pointStyle: "circle",
+                            fontColor: '#fff',
+                            boxWidth: 6,
+                            boxHeight: 6,
+                            borderRadius: "50",
+                            }
+                            },
+                            },
+                            responsive: true,
+                            rotation : 0
+                            },
+                            responsive : true,
                             });
-                          </script>                          
+                            
+                            
+                            
+                            
+                                </script>
                     </div>
 
                     <div class="grid grid-cols-2 gap-4 lg:w-1/2">
@@ -349,8 +405,8 @@
                                 <text x="345" y="265" dy="5">Apr</text>
                             </svg>
                         </div>
-                        <div class="bg-white py-5 px-6 rounded shadow-md">
-                            <h3 class="font-bold">Event Creation</h3>
+                        <div class="bg-white py-5 px-6 rounded border border-gray-300 shadow-md">
+                          <h3 class="font-bold">Event Creation</h3>
                             <svg class="chart" viewBox="0 0 500 300">
                                 <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
                                 <circle class="chart-point" cx="50" cy="250" r="4" />
