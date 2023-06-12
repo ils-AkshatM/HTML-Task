@@ -1,20 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Files Event</title>
-    <link rel="stylesheet" href="../Resources/css/files_event.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <title>Files_Event</title>
+    <style>
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+
+        .custom-bg {
+            background-color: #F3F4F9;
+        }
+        .custom-card {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 2px 12px #0000000F;
+        border-radius: 10px;
+        opacity: 1;
+        }
+        .custom-shadow {
+            box-shadow: 0px 2px 14px #0000001a;
+            opacity: 1;
+            z-index: 2;
+        }
+        /* Hide the small sidebar by default for small screens
+        #sidebarSmall {
+            display: none;
+        }
+
+        /* Show the small sidebar when it is not hidden */
+        /* #sidebarSmall:not(.hidden) {
+            display: block;
+        } */
+         .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            }
+
+            .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            }
+
+            .show {
+            display: block;
+            }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      function handleFileUpload() {
-        console.log("File uploaded");
-      }
-    </script>
-    <script>
-      // Check if the user is already logged in
+        // Check if the user is already logged in
       function checkLoggedIn() {
         var isLoggedIn = sessionStorage.getItem("isLoggedIn");
   
@@ -37,150 +87,373 @@
     }
     </script>
 </head>
-<body>
-    <div class="navbar">
-        <div class="navbar-logo" onclick="toggleSideNav()">
-            <img src="../Resources/assets/UEP copy.png" alt="UEPViewer">
-        </div>
-        <div class="navbar-right">
-          <div class="notification-icon">
-            <img src="../Resources/assets/Notification.png" alt="Notification Icon">
-          </div>
-          <div class="profile-dropdown">
-            <img src="../Resources/assets/Oval.png" alt="Profile Image">
-            <div class="dropdown-content">
-              <a href="./updatepasword.html">Update Profile</a>
-              <a href="../index.html" onclick="handleLogout()">Logout</a>
+
+<body class="font-roboto">
+    <nav class="bg-gradient-to-r from-gray-900 to-gray-700 py-6">
+        <div class="mx-auto px-4 sm:px-14 lg:px-36">
+            <div class="flex justify-between items-center">
+                <div id="hamburger" class="flex items-center">
+                    <img class="h-10 w-auto" src="../Resources/assets/UEP copy.png" alt="Logo" />
+                </div>
+                <div class="flex gap-2 items-center ml-16 sm:ml-8">
+                    <div class="notification-icon">
+                        <img src="../Resources/assets/Notification.png" alt="Notification Icon" class="h-6 w-auto ml-4 mr-4" />
+                    </div>
+                    <div class="relative">
+                        <div class="flex items-center cursor-pointer" onclick="toggleDropdown(event)">
+                            <img src="../Resources/assets/Oval.png" alt="Profile Image" class="dropbtn h-8 w-auto" />
+                            <div class="ml-4">
+                                <p class="text-sm text-white font-bold">Akshat Maheshwari</p>
+                                <p class="text-xs text-gray-400">Admin</p>
+                            </div>
+                            <!-- <svg class="h-4 w-4 -ml-4 text-gray-400 transform transition-transform" viewBox="0 0 20 20" fill="currentColor" x-bind:class="{ 'rotate-180': isOpen }">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 3.5a1 1 0 01.707.293l4 4a1 1 0 01-1.414 1.414L10 6.414 6.707 9.707a1 1 0 11-1.414-1.414l4-4A1 1 0 0110 3.5z" />
+                            </svg> -->
+                        </div>
+                        <div class="absolute right-0 top-full mt-2 bg-white rounded-md shadow-md hidden" id="dropdownContent">
+                            <a href="#" class="block py-2 px-4 text-gray-800 text-sm">Designation</a>
+                            <hr class="my-2">
+                            <a href="./updatepassword.html" class="block py-2 px-4 text-gray-800 text-sm">Update Profile</a>
+                            <a href="../index.html" onclick="handleLogout()" class="block py-2 px-4 text-gray-800 text-sm">Logout</a>
+                        </div>
+                        <script>
+                            function toggleDropdown(event) {
+                                event.stopPropagation();
+                                var dropdownContent = document.getElementById("dropdownContent");
+                                dropdownContent.classList.toggle("hidden");
+                            }
+
+                            window.onclick = function(event) {
+                            var dropdownContent = document.getElementById("dropdownContent");
+                            if (event.target !== dropdownContent && !dropdownContent.contains(event.target)) {
+                            dropdownContent.classList.add("hidden");
+                            }
+                        }
+                        </script>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      
-      <div class="sidenav" id="sidenav">
-        <div id="menu">
-              <ul>
-                <li><i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a></li>
-                <li class="current active"><i class="ri-image-2-fill"></i><a href="./files_event.html">Files</a></li>
-                <li><i class="ri-calendar-2-line"></i><a href="#">Events</a></li>
-                <li><i class="ri-team-fill"></i><a href="#">Customer Accounts</a></li>
-                <li><i class="ri-user-5-fill"></i><a href="#">Staff</a></li>
-                <li><i class="ri-user-3-fill"></i><a href="#">Producers</a></li>
-                <li><i class="ri-list-unordered"></i><a href="#">Orders</a></li>
-                <li><i class="ri-chat-new-fill"></i><a href="#">Zendesk Chat</a></li>
-              </ul>
+    </nav>
+    
+    <div class="flex p-6">
+        <div class="hidden lg:flex w-[300px] custom-shadow pr-5">
+            <div class="">
+                <div>
+                    <ul class="pt-10 flex flex-col gap-2">
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-image-2-fill"></i><a href="./files_event.html">Files</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-calendar-2-line"></i><a href="#">Events</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-team-fill"></i><a href="#">Customer Accounts</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-user-5-fill"></i><a href="#">Staff</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-user-3-fill"></i><a href="#">Producers</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-list-unordered"></i><a href="#">Orders</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px] font-medium">
+                            <i class="ri-chat-new-fill"></i><a href="#">Zendesk Chat</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
+        <div id="sidebarSmall" class=" fixed top-16 h-screen w-1/2 md:w-2/5 bg-gray-200 hidden lg:hidden">
+            <div>
+                <ul class="pt-10 flex flex-col gap-2">
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-image-2-fill"></i><a href="./files_event.html">Files</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-calendar-2-line"></i><a href="#">Events</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-team-fill"></i><a href="#">Customer Accounts</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-user-5-fill"></i><a href="#">Staff</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-user-3-fill"></i><a href="#">Producers</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-list-unordered"></i><a href="#">Orders</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px] font-medium">
+                        <i class="ri-chat-new-fill"></i><a href="#">Zendesk Chat</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="w-full custom-bg flex flex-col gap-4 lg:pl-8 lg:py-4 p-4">
+            <div class="flex flex-col gap-2">
+                <div class="dashboard-content">
+                    <div class="flex justify-between items-center">
+                      <h2 class="text-[32px] text-[#202020] font-medium">Files</h2>
+                      <label for="fileUploadButton" class="text-white bg-pink-500 px-4 py-2 rounded-full">
+                        <input type="file" id="fileUploadButton" class="hidden" onchange="handleFileUpload()">
+                        + Add Files
+                      </label>
+                    </div>
+                    <ul class="flex text-sm text-gray-700 font-medium items-center mt-4 mb-2">
+                        <li><a href="#" class="text-blue-500 hover:text-blue-700">Events <span class="text-gray-500">></span></a></li>
+                        <li><a href="#" class="text-blue-500 hover:text-blue-700">Folders <span class="text-gray-500">></span></a></li>
+                        <li><a href="#" class="text-blue-500 hover:text-blue-700">Party Hub Pass <span class="text-gray-500">></span></a></li>
+                        <li class="text-gray-500">Event Decoration</li>
+                      </ul>                      
+                    <hr>
+                  </div>
+                  
+                  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div class="bg-white rounded shadow-md custom-card hover:shadow-lg" onclick="openPopup()">
+                      <img class="rounded-t-md" src="https://picsum.photos/310/200" alt="Image">
+                      <div class="flex flex-col p-2 gap-1">  
+                        <p class="text-sm text-pink-500 font-regular">Forest.Jpg</p>
+                        <p class="text-sm text-gray-700 font-bold">Download Count: 321</p>
+                        <div class="text-sm text-gray-500 font-regular">May 29, 2023</div>
+                      <div class="actions">
+                        <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
+                        <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
+                      </div>
+                      </div>
+                    </div>
+                    <!-- popup  -->
+                    <!-- Modal Popup -->
+                    <div id="popup" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+                        <div class="bg-white rounded shadow-md p-4 max-w-md" style="top: 128px; left: 572px; width: 777px; height: 522px;">
+                          <!-- Heading and Close Icon -->
+                          <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-bold">Forest.Jpg</h2>
+                            <button onclick="closePopup()" class="text-gray-500 hover:text-gray-700">
+                                <i class="ri-close-fill"></i>
+                            </button>
+                          </div>
+                      
+                          <!-- Image -->
+                          <img class="rounded-md mx-auto mt-4" src="https://picsum.photos/400/200" alt="Image">
+                      
+                          <!-- Breadcrumb and Icons -->
+                          <div class="flex items-center justify-between mt-4">
+                            <ul class="flex text-sm text-gray-700 font-medium items-center">
+                              <li><a href="#" class="text-blue-500 hover:text-blue-700">Events <span class="text-gray-500">></span></a></li>
+                              <li><a href="#" class="text-blue-500 hover:text-blue-700">Folders <span class="text-gray-500">></span></a></li>
+                              <li><a href="#" class="text-blue-500 hover:text-blue-700">Party Hub Pass <span class="text-gray-500">></span></a></li>
+                              <li class="text-gray-500">Event Decoration</li>
+                            </ul>
+                            <div class="flex items-center gap-2">
+                              <a href="#" class="text-gray-500 hover:text-gray-700"><i class="ri-download-2-fill"></i></a>
+                              <a href="#" class="text-gray-500 hover:text-gray-700"><i class="ri-delete-bin-7-fill"></i></i></a>
+                            </div>
+                          </div>
+                      
+                          <!-- Download Count and Product Count -->
+                          <p class="text-sm text-gray-700 mt-2">Download Count: 321 | Product Count: 100</p>
+                      
+                          <!-- Comment Heading and Content -->
+                          <h3 class="text-base font-bold mt-4">Comments</h3>
+                          <p class="text-sm text-gray-700 mt-2 leading-snug">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Sed suscipit purus sed augue ullamcorper, at cursus metus vestibulum.
+                            Fusce hendrerit ligula ac efficitur rutrum. Donec fringilla cursus felis, nec posuere turpis blandit at.
+                          </p>
+                      
+                          <!-- Creation Date -->
+                          <p class="text-sm text-gray-500 mt-4">Created on: May 29, 2023</p>
+                        </div>
+                      </div>
+                    
+                      
+                      <script>
+                        function openPopup() {
+                          var popup = document.getElementById("popup");
+                          popup.classList.remove("hidden");
+                        }
+                      
+                        function closePopup() {
+                          var popup = document.getElementById("popup");
+                          popup.classList.add("hidden");
+                        }
+                      </script>
+                    
+                    <div class="bg-white rounded shadow-md custom-card hover:shadow-lg" onclick="openPopup()">
+                        <img class="rounded-t-md" src="https://picsum.photos/310/200" alt="Image">
+                        <div class="flex flex-col p-2 gap-1">  
+                          <p class="text-sm text-pink-500 font-regular">Forest.Jpg</p>
+                          <p class="text-sm text-gray-700 font-bold">Download Count: 321</p>
+                          <div class="text-sm text-gray-500 font-regular">May 29, 2023</div>
+                        <div class="actions">
+                          <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
+                          <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
+                        </div>
+                        </div>
+                      </div>
+                      <!-- popup  -->
+                      <!-- Modal Popup -->
+                      <div id="popup" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+                          <div class="bg-white rounded shadow-md p-4 max-w-md" style="top: 128px; left: 572px; width: 777px; height: 522px;">
+                            <!-- Heading and Close Icon -->
+                            <div class="flex items-center justify-between">
+                              <h2 class="text-lg font-bold">Forest.Jpg</h2>
+                              <button onclick="closePopup()" class="text-gray-500 hover:text-gray-700">
+                                  <i class="ri-close-fill"></i>
+                              </button>
+                            </div>
+                        
+                            <!-- Image -->
+                            <img class="rounded-md mx-auto mt-4" src="https://picsum.photos/400/200" alt="Image">
+                        
+                            <!-- Breadcrumb and Icons -->
+                            <div class="flex items-center justify-between mt-4">
+                              <ul class="flex text-sm text-gray-700 font-medium items-center">
+                                <li><a href="#" class="text-blue-500 hover:text-blue-700">Events <span class="text-gray-500">></span></a></li>
+                                <li><a href="#" class="text-blue-500 hover:text-blue-700">Folders <span class="text-gray-500">></span></a></li>
+                                <li><a href="#" class="text-blue-500 hover:text-blue-700">Party Hub Pass <span class="text-gray-500">></span></a></li>
+                                <li class="text-gray-500">Event Decoration</li>
+                              </ul>
+                              <div class="flex items-center gap-2">
+                                <a href="#" class="text-gray-500 hover:text-gray-700"><i class="ri-download-2-fill"></i></a>
+                                <a href="#" class="text-gray-500 hover:text-gray-700"><i class="ri-delete-bin-7-fill"></i></i></a>
+                              </div>
+                            </div>
+                        
+                            <!-- Download Count and Product Count -->
+                            <p class="text-sm text-gray-700 mt-2">Download Count: 321 | Product Count: 100</p>
+                        
+                            <!-- Comment Heading and Content -->
+                            <h3 class="text-base font-bold mt-4">Comments</h3>
+                            <p class="text-sm text-gray-700 mt-2 leading-snug">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                              Sed suscipit purus sed augue ullamcorper, at cursus metus vestibulum.
+                              Fusce hendrerit ligula ac efficitur rutrum. Donec fringilla cursus felis, nec posuere turpis blandit at.
+                            </p>
+                        
+                            <!-- Creation Date -->
+                            <p class="text-sm text-gray-500 mt-4">Created on: May 29, 2023</p>
+                          </div>
+                        </div>                       
+                        <script>
+                          function openPopup() {
+                            var popup = document.getElementById("popup");
+                            popup.classList.remove("hidden");
+                          }
+                        
+                          function closePopup() {
+                            var popup = document.getElementById("popup");
+                            popup.classList.add("hidden");
+                          }
+                        </script>
+            
+                      <div class="bg-white rounded shadow-md custom-card hover:shadow-lg">
+                        <img class="rounded-t-md" src="https://picsum.photos/310/200" alt="Image">
+                        <div class="flex flex-col p-2 gap-1">  
+                            <p class="text-sm text-pink-500 font-regular">Forest.Jpg</p>
+                            <p class="text-sm text-gray-700 font-bold">Download Count: 321</p>
+                            <div class="text-sm text-gray-500 font-regular">May 29, 2023</div>
+                        <div class="actions">
+                          <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
+                          <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
+                        </div>
+                        </div>
+                      </div>
+            
+                      <div class="bg-white rounded shadow-md custom-card hover:shadow-lg">
+                        <img class="rounded-t-md" src="https://picsum.photos/310/200" alt="Image">
+                        <div class="flex flex-col p-2 gap-1">  
+                            <p class="text-sm text-pink-500 font-regular">Forest.Jpg</p>
+                            <p class="text-sm text-gray-700 font-bold">Download Count: 321</p>
+                            <div class="text-sm text-gray-500 font-regular">May 29, 2023</div>
+                        <div class="actions">
+                          <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
+                          <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
+                        </div>
+                        </div>
+                      </div>
+            
+                      <div class="bg-white rounded shadow-md custom-card hover:shadow-lg">
+                        <img class="rounded-t-md" src="https://picsum.photos/310/200" alt="Image">
+                        <div class="flex flex-col p-2 gap-1">  
+                            <p class="text-sm text-pink-500 font-regular">Forest.Jpg</p>
+                            <p class="text-sm text-gray-700 font-bold">Download Count: 321</p>
+                            <div class="text-sm text-gray-500 font-regular">May 29, 2023</div>
+                        <div class="actions">
+                          <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
+                          <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
+                        </div>
+                        </div>
+                      </div>
+            
+                      <div class="bg-white rounded shadow-md custom-card hover:shadow-lg">
+                        <img class="rounded-t-md" src="https://picsum.photos/310/200" alt="Image">
+                        <div class="flex flex-col p-2 gap-1">  
+                            <p class="text-sm text-pink-500 font-regular">Forest.Jpg</p>
+                            <p class="text-sm text-gray-700 font-bold">Download Count: 321</p>
+                            <div class="text-sm text-gray-500 font-regular">May 29, 2023</div>
+                        <div class="actions">
+                          <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
+                          <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
+                        </div>
+                        </div>
+                      </div>
+            
+                      <div class="bg-white rounded shadow-md custom-card hover:shadow-lg">
+                        <img class="rounded-t-md" src="https://picsum.photos/310/200" alt="Image">
+                        <div class="flex flex-col p-2 gap-1">  
+                            <p class="text-sm text-pink-500 font-regular">Forest.Jpg</p>
+                            <p class="text-sm text-gray-700 font-bold">Download Count: 321</p>
+                            <div class="text-sm text-gray-500 font-regular">May 29, 2023</div>
+                        <div class="actions">
+                          <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
+                          <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
+                        </div>
+                        </div>
+                      </div>
+                            
+            </div>
+        </div>
+        <script>
+            function toggleSidebar() {
+                const sidebarSmall = document.getElementById("sidebarSmall");
+                sidebarSmall.classList.toggle("hidden");
+            }
 
-      <div class="dashboard-content">
-        <div class="dash-heading">
-          <h2>Files</h2>
-          <label for="fileUploadButton" class="upload-button">
-            <input type="file" id="fileUploadButton" class="hidden-input" onchange="handleFileUpload()">
-            <i class="fa fa-plus" style="margin-right: 5px;"></i> Add Files
-          </label>
-        </div>
-        <ul class="breadcrumb">
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Folders</a></li>
-          <li><a href="#">Party Hub Pass</a></li>
-          <li>Event Decoration</li>
-        </ul>
-        <hr>
-      </div>
-      
-      <div class="card-container">
-        <div class="card">
-          <img class="image" src="https://picsum.photos/280/200" alt="Image">
-          <div class="details-container">  
-          <p class="file-name">example_file.pdf</p>
-          <p class="download-count">Download Count: 100</p>
-          <div class="date">May 29, 2023</div>
-          <div class="actions">
-            <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
-            <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
-          </div>
-          </div>
-        </div>
-        
-        <div class="card">
-          <img class="image" src="https://picsum.photos/280/200" alt="Image">
-          <div class="details-container">  
-          <p class="file-name">example_file.pdf</p>
-          <p class="download-count">Download Count: 100</p>
-          <div class="date">May 29, 2023</div>
-          <div class="actions">
-            <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
-            <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
-          </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="image" src="https://picsum.photos/280/200" alt="Image">
-          <div class="details-container">  
-          <p class="file-name">example_file.pdf</p>
-          <p class="download-count">Download Count: 100</p>
-          <div class="date">May 29, 2023</div>
-          <div class="actions">
-            <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
-            <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
-          </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="image" src="https://picsum.photos/280/200" alt="Image">
-          <div class="details-container">  
-          <p class="file-name">example_file.pdf</p>
-          <p class="download-count">Download Count: 100</p>
-          <div class="date">May 29, 2023</div>
-          <div class="actions">
-            <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
-            <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
-          </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="image" src="https://picsum.photos/280/200" alt="Image">
-          <div class="details-container">  
-          <p class="file-name">example_file.pdf</p>
-          <p class="download-count">Download Count: 100</p>
-          <div class="date">May 29, 2023</div>
-          <div class="actions">
-            <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
-            <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
-          </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="image" src="https://picsum.photos/280/200" alt="Image">
-          <div class="details-container">  
-          <p class="file-name">example_file.pdf</p>
-          <p class="download-count">Download Count: 100</p>
-          <div class="date">May 29, 2023</div>
-          <div class="actions">
-            <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
-            <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
-          </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="image" src="https://picsum.photos/280/200" alt="Image">
-          <div class="details-container">  
-          <p class="file-name">example_file.pdf</p>
-          <p class="download-count">Download Count: 100</p>
-          <div class="date">May 29, 2023</div>
-          <div class="actions">
-            <a class="edit-icon" href="#"><i class="fa fa-pen"></i></a>
-            <a class="delete-icon" href="#"><i class="fa fa-trash"></i></a>
-          </div>
-          </div>
-        </div>
-
-        
-      </div>
+            // Add an event listener to the hamburger icon
+            const hamburger = document.getElementById("hamburger");
+            hamburger.addEventListener("click", toggleSidebar);
+        </script>
 </body>
+
+</html>
+
+</body>
+
 </html>

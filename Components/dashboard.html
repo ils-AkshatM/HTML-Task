@@ -1,22 +1,86 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="../Resources/css/dashboard.css" />
-    <link
-      rel="stylesheet"
-      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Dashboard</title>
+    <style>
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar-hidden {
+            transform: translateX(-100%);
+        }
+
+        .custom-bg {
+            background-color: #F3F4F9;   
+        }
+        .custom-card {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 2px 12px #0000000F;
+        border-radius: 10px;
+        opacity: 1;
+        }
+
+
+        .custom-shadow {
+            box-shadow: 0px 2px 14px #0000001a;
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .pie-chart {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            flex-basis: 40%;
+        }
+
+        /* Hide the small sidebar by default for small screens
+        #sidebarSmall {
+            display: none;
+        }
+
+        /* Show the small sidebar when it is not hidden */
+        /* #sidebarSmall:not(.hidden) {
+            display: block;
+        } */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            }
+
+            .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            }
+
+            .show {
+            display: block;
+            }
+
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // Check if the user is already logged in
+        // Check if the user is already logged in
       function checkLoggedIn() {
         var isLoggedIn = sessionStorage.getItem("isLoggedIn");
-
+  
         if (!isLoggedIn) {
           // Redirect to the login page if the user is not logged in
           window.location.href = "../index.html";
@@ -30,194 +94,293 @@
       }
       // Execute the checkLoggedIn function on page load
       window.addEventListener("load", checkLoggedIn);
+      function toggleSideNav() {
+      var sidenav = document.getElementById("sidenav");
+      sidenav.style.display = sidenav.style.display === "none" ? "block" : "none";
+    }
     </script>
-  </head>
-  <body>
-    <div class="navbar">
-      <div class="navbar-logo">
-        <img src="../Resources/assets/UEP copy.png" alt="UEPViewer" />
-      </div>
-      <div class="navbar-right">
-        <div class="notification-icon">
-          <img
-            src="../Resources/assets/Notification.png"
-            alt="Notification Icon"
-          />
-        </div>
-        <div class="profile-dropdown">
-          <img src="../Resources/assets/Oval.png" alt="Profile Image" />
-          <div class="dropdown-content">
-            <a href="./updatepasword.html">Update Profile</a>
-            <a href="../index.html" onclick="handleLogout()">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+</head>
 
-    <div class="sidenav">
-      <div id="menu">
-        <ul>
-          <li class="current active">
-            <i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a>
-          </li>
-          <li>
-            <i class="ri-image-2-fill"></i
-            ><a href="./files_event.html">Files</a>
-          </li>
-          <li><i class="ri-calendar-2-line"></i><a href="#">Events</a></li>
-          <li><i class="ri-team-fill"></i><a href="#">Customer Accounts</a></li>
-          <li><i class="ri-user-5-fill"></i><a href="#">Staff</a></li>
-          <li><i class="ri-user-3-fill"></i><a href="#">Producers</a></li>
-          <li><i class="ri-list-unordered"></i><a href="#">Orders</a></li>
-          <li><i class="ri-chat-new-fill"></i><a href="#">Zendesk Chat</a></li>
-        </ul>
-      </div>
-    </div>
+<body class="font-roboto">
+    <nav class="bg-gradient-to-r from-gray-900 to-gray-700 py-6">
+        <div class="mx-auto px-4 sm:px-14 lg:px-36">
+            <div class="flex justify-between items-center">
+                <div id="hamburger" class="flex items-center">
+                    <img class="h-12 w-auto" src="../Resources/assets/UEP copy.png" alt="Logo" />
+                </div>
+                <div class="flex gap-2 items-center ml-16 sm:ml-8">
+                    <div class="notification-icon">
+                        <img src="../Resources/assets/Notification.png" alt="Notification Icon" class="h-6 w-auto ml-4 mr-4" />
+                    </div>
+                    <div class="relative">
+                        <div class="flex items-center cursor-pointer" onclick="toggleDropdown(event)">
+                            <img src="../Resources/assets/Oval.png" alt="Profile Image" class="dropbtn h-8 w-auto" />
+                            <div class="ml-4">
+                                <p class="text-sm text-white font-bold">Akshat Maheshwari</p>
+                                <p class="text-xs text-gray-400">Admin</p>
+                            </div>
+                            <!-- <svg class="h-4 w-4 -ml-4 text-gray-400 transform transition-transform" viewBox="0 0 20 20" fill="currentColor" x-bind:class="{ 'rotate-180': isOpen }">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 3.5a1 1 0 01.707.293l4 4a1 1 0 01-1.414 1.414L10 6.414 6.707 9.707a1 1 0 11-1.414-1.414l4-4A1 1 0 0110 3.5z" />
+                            </svg> -->
+                        </div>
+                        <div class="absolute right-0 top-full mt-2 bg-white rounded-md shadow-md hidden" id="dropdownContent">
+                            <a href="#" class="block py-2 px-4 text-gray-800 text-sm">Designation</a>
+                            <hr class="my-2">
+                            <a href="./updatepassword.html" class="block py-2 px-4 text-gray-800 text-sm">Update Profile</a>
+                            <a href="../index.html" onclick="handleLogout()" class="block py-2 px-4 text-gray-800 text-sm">Logout</a>
+                        </div>
+                        <script>
+                            function toggleDropdown(event) {
+                                event.stopPropagation();
+                                var dropdownContent = document.getElementById("dropdownContent");
+                                dropdownContent.classList.toggle("hidden");
+                            }
 
-    <div class="dashboard-content">
-      <h2>Report</h2>
-      <div class="number-cards">
-        <div class="card">
-          <h2>13,000</h2>
-          <p>Total Customers</p>
+                            window.onclick = function(event) {
+                            var dropdownContent = document.getElementById("dropdownContent");
+                            if (event.target !== dropdownContent && !dropdownContent.contains(event.target)) {
+                            dropdownContent.classList.add("hidden");
+                            }
+                        }
+                        </script>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <h2>40M</h2>
-          <p>Images Download</p>
+    </nav>
+    
+        
+    <div class="flex">
+        <div class="hidden lg:flex w-[300px] custom-shadow pr-5">
+            <div class="">
+                <div>
+                    <ul class="pt-10 flex flex-col gap-2">
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-medium py-2 text-[18px] active">
+                            <i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-image-2-fill"></i><a href="./files_event.html">Files</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-calendar-2-line"></i><a href="#">Events</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-team-fill"></i><a href="#">Customer Accounts</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-user-5-fill"></i><a href="#">Staff</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-user-3-fill"></i><a href="#">Producers</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                            <i class="ri-list-unordered"></i><a href="#">Orders</a>
+                        </li>
+                        <li
+                            class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px] font-medium">
+                            <i class="ri-chat-new-fill"></i><a href="#">Zendesk Chat</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="card">
-          <h2>10M</h2>
-          <p>Videos Downloaded</p>
+        <div id="sidebarSmall" class=" fixed top-16 h-screen w-1/2 md:w-2/5 bg-gray-200 hidden lg:hidden">
+            <div>
+                <ul class="pt-10 flex flex-col gap-2">
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-home-4-fill"></i><a href="./dashboard2.html">Reports</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-image-2-fill"></i><a href="./files_event2.html">Files</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-calendar-2-line"></i><a href="#">Events</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-team-fill"></i><a href="#">Customer Accounts</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-user-5-fill"></i><a href="#">Staff</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-user-3-fill"></i><a href="#">Producers</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px]">
+                        <i class="ri-list-unordered"></i><a href="#">Orders</a>
+                    </li>
+                    <li
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-800 hover:pl-3 pl-4 font-medium py-2 text-[18px] font-medium">
+                        <i class="ri-chat-new-fill"></i><a href="#">Zendesk Chat</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="card">
-          <h2>1200</h2>
-          <p>Event Created</p>
-        </div>
-        <div class="card">
-          <h2>150</h2>
-          <p>Sales Report Count</p>
-        </div>
-      </div>
+        <div class="w-full custom-bg flex flex-col gap-4 lg:pl-8 lg:py-4 p-4">
+            <div class="flex flex-col gap-2">
+                <h2 class="text-[32px] text-[#202020] font-medium">Report</h2>
+                <div class="grid grid-cols-2 gap-2 lg:flex lg:gap-5 lg:pr-20">
+                    <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
+                        <h2 class="lg:text-3xl text-[#202020] font-medium">13,000</h2>
+                        <p class="lg:text-lg text-[#202020] font-regular">Total Customers</p>
+                    </div>
+                    <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
+                        <h2 class="lg:text-3xl text-[#202020] font-medium">40M</h2>
+                        <p class="lg:text-lg text-[#202020] font-regular">Images Downloaded</p>
+                    </div>
+                    <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
+                        <h2 class="lg:text-3xl text-[#202020] font-medium">10M</h2>
+                        <p class="lg:text-lg text-[#202020] font-regular">Videos Downloaded</p>
+                    </div>
+                    <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
+                        <h2 class="lg:text-3xl text-[#202020] font-medium">1200</h2>
+                        <p class="lg:text-lg text-[#202020] font-regular">Event Created</p>
+                    </div>
+                    <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
+                        <h2 class="lg:text-3xl text-[#202020] font-medium">150</h2>
+                        <p class="lg:text-lg text-[#202020] font-regular">Sales Report Count</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-full lg:pr-20">
+                <h2 class="text-[28px] text-[#202020] font-medium mb-2">Visual Reports</h2>
 
-      <h2>Visual Reports</h2>
+                <div class="grid grid-cols-1 lg:flex gap-4">
+                    <div class="lg:w-1/2">
+                        <div class="pie-chart w-full">
+                            <canvas id="pieChart" class="w-64 h-64"></canvas>
+                          </div>                         
+                          <script>
+                            // pie-Chart
+                            var ctx = document.getElementById("pieChart").getContext("2d");
+                          
+                            // Create the chart data
+                            var data = {
+                              labels: ["Party Hub Pass", "Disco Dancer", "Sparkling Nights"],
+                              datasets: [
+                                {
+                                  data: [60, 58, 55],
+                                  backgroundColor: ["#F0582F", "#6EB1E1", "#71D456"],
+                                  borderWidth: 10,
+                                },
+                              ],
+                            };
+                          
+                            // Create the pie chart
+                            var myPieChart = new Chart(ctx, {
+                              type: "pie",
+                              data: data,
+                              options: {
+                                plugins: {
+                                  datalabels: {
+                                    color: "white",
+                                    font: {
+                                      weight: "bold",
+                                    },
+                                    formatter: function (value, context) {
+                                      return (
+                                        context.chart.data.labels[context.dataIndex] +
+                                        ": " +
+                                        value +
+                                        "%"
+                                      );
+                                    },
+                                  },
+                                },
+                              },
+                            });
+                          </script>                          
+                    </div>
 
-      <div class="reports-container">
-        <div class="pie-chart">
-          <canvas id="pieChart"></canvas>
-
-          <script>
-            // pie-Chart
-            var ctx = document.getElementById("pieChart").getContext("2d");
-
-            // Create the chart data
-            var data = {
-              labels: ["Party Hub Pass", "Disco Dancer", "Sparkling Nights"],
-              datasets: [
-                {
-                  data: [60, 58, 55],
-                  backgroundColor: ["#F0582F", "#6EB1E1", "#71D456"],
-                  borderWidth: 10,
-                },
-              ],
-            };
-
-            // Create the pie chart
-            var myPieChart = new Chart(ctx, {
-              type: "pie",
-              data: data,
-              options: {
-                plugins: {
-                  datalabels: {
-                    color: "white",
-                    font: {
-                      weight: "bold",
-                    },
-                    formatter: function (value, context) {
-                      return (
-                        context.chart.data.labels[context.dataIndex] +
-                        ": " +
-                        value +
-                        "%"
-                      );
-                    },
-                  },
-                },
-              },
-            });
-          </script>
+                    <div class="grid grid-cols-2 gap-4 lg:w-1/2">
+                        <div class="bg-white py-5 px-6 rounded shadow-md">
+                            <h3 class="font-bold">All Downloads</h3>
+                            <svg class="chart" viewBox="0 0 500 300">
+                                <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
+                                <circle class="chart-point" cx="50" cy="250" r="4" />
+                                <circle class="chart-point" cx="150" cy="180" r="4" />
+                                <circle class="chart-point" cx="250" cy="220" r="4" />
+                                <circle class="chart-point" cx="350" cy="250" r="4" />
+                                <text x="45" y="265" dy="5">Jan</text>
+                                <text x="145" y="265" dy="5">Feb</text>
+                                <text x="245" y="265" dy="5">Mar</text>
+                                <text x="345" y="265" dy="5">Apr</text>
+                            </svg>
+                        </div>
+                        <div class="bg-white py-5 px-6 rounded shadow-md">
+                            <h3 class="font-bold">Image Downloads</h3>
+                            <svg class="chart" viewBox="0 0 500 300">
+                                <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
+                                <circle class="chart-point" cx="50" cy="250" r="4" />
+                                <circle class="chart-point" cx="150" cy="180" r="4" />
+                                <circle class="chart-point" cx="250" cy="220" r="4" />
+                                <circle class="chart-point" cx="350" cy="250" r="4" />
+                                <text x="45" y="265" dy="5">Jan</text>
+                                <text x="145" y="265" dy="5">Feb</text>
+                                <text x="245" y="265" dy="5">Mar</text>
+                                <text x="345" y="265" dy="5">Apr</text>
+                            </svg>
+                        </div>
+                        <div class="bg-white py-5 px-6 rounded shadow-md">
+                            <h3 class="font-bold">Video Downloads</h3>
+                            <svg class="chart" viewBox="0 0 500 300">
+                                <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
+                                <circle class="chart-point" cx="50" cy="250" r="4" />
+                                <circle class="chart-point" cx="150" cy="180" r="4" />
+                                <circle class="chart-point" cx="250" cy="220" r="4" />
+                                <circle class="chart-point" cx="350" cy="250" r="4" />
+                                <text x="45" y="265" dy="5">Jan</text>
+                                <text x="145" y="265" dy="5">Feb</text>
+                                <text x="245" y="265" dy="5">Mar</text>
+                                <text x="345" y="265" dy="5">Apr</text>
+                            </svg>
+                        </div>
+                        <div class="bg-white py-5 px-6 rounded shadow-md">
+                            <h3 class="font-bold">Event Creation</h3>
+                            <svg class="chart" viewBox="0 0 500 300">
+                                <polyline class="chart-line" points="50,250 150,180 250,220 350,250" />
+                                <circle class="chart-point" cx="50" cy="250" r="4" />
+                                <circle class="chart-point" cx="150" cy="180" r="4" />
+                                <circle class="chart-point" cx="250" cy="220" r="4" />
+                                <circle class="chart-point" cx="350" cy="250" r="4" />
+                                <text x="45" y="265" dy="5">Jan</text>
+                                <text x="145" y="265" dy="5">Feb</text>
+                                <text x="245" y="265" dy="5">Mar</text>
+                                <text x="345" y="265" dy="5">Apr</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <script>
+            function toggleSidebar() {
+                const sidebarSmall = document.getElementById("sidebarSmall");
+                sidebarSmall.classList.toggle("hidden");
+            }
 
-        <div class="graphs">
-          <div class="graph">
-            <h3>All Downloads</h3>
-            <svg class="chart" viewBox="0 0 500 300">
-              <polyline
-                class="chart-line"
-                points="50,250 150,180 250,220 350,250"
-              />
-              <circle class="chart-point" cx="50" cy="250" r="4" />
-              <circle class="chart-point" cx="150" cy="180" r="4" />
-              <circle class="chart-point" cx="250" cy="220" r="4" />
-              <circle class="chart-point" cx="350" cy="250" r="4" />
-              <text x="45" y="265" dy="5">Jan</text>
-              <text x="145" y="265" dy="5">Feb</text>
-              <text x="245" y="265" dy="5">Mar</text>
-              <text x="345" y="265" dy="5">Apr</text>
-            </svg>
-          </div>
-          <div class="graph">
-            <h3>Image Downloads</h3>
-            <svg class="chart" viewBox="0 0 500 300">
-              <polyline
-                class="chart-line"
-                points="50,250 150,180 250,220 350,250"
-              />
-              <circle class="chart-point" cx="50" cy="250" r="4" />
-              <circle class="chart-point" cx="150" cy="180" r="4" />
-              <circle class="chart-point" cx="250" cy="220" r="4" />
-              <circle class="chart-point" cx="350" cy="250" r="4" />
-              <text x="45" y="265" dy="5">Jan</text>
-              <text x="145" y="265" dy="5">Feb</text>
-              <text x="245" y="265" dy="5">Mar</text>
-              <text x="345" y="265" dy="5">Apr</text>
-            </svg>
-          </div>
-          <div class="graph">
-            <h3>Video Downloads</h3>
-            <svg class="chart" viewBox="0 0 500 300">
-              <polyline
-                class="chart-line"
-                points="50,250 150,180 250,220 350,250"
-              />
-              <circle class="chart-point" cx="50" cy="250" r="4" />
-              <circle class="chart-point" cx="150" cy="180" r="4" />
-              <circle class="chart-point" cx="250" cy="220" r="4" />
-              <circle class="chart-point" cx="350" cy="250" r="4" />
-              <text x="45" y="265" dy="5">Jan</text>
-              <text x="145" y="265" dy="5">Feb</text>
-              <text x="245" y="265" dy="5">Mar</text>
-              <text x="345" y="265" dy="5">Apr</text>
-            </svg>
-          </div>
-          <div class="graph">
-            <h3>Event Creation</h3>
-            <svg class="chart" viewBox="0 0 500 300">
-              <polyline
-                class="chart-line"
-                points="50,250 150,180 250,220 350,250"
-              />
-              <circle class="chart-point" cx="50" cy="250" r="4" />
-              <circle class="chart-point" cx="150" cy="180" r="4" />
-              <circle class="chart-point" cx="250" cy="220" r="4" />
-              <circle class="chart-point" cx="350" cy="250" r="4" />
-              <text x="45" y="265" dy="5">Jan</text>
-              <text x="145" y="265" dy="5">Feb</text>
-              <text x="245" y="265" dy="5">Mar</text>
-              <text x="345" y="265" dy="5">Apr</text>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+            // Add an event listener to the hamburger icon
+            const hamburger = document.getElementById("hamburger");
+            hamburger.addEventListener("click", toggleSidebar);
+        </script>
+</body>
+
+</html>
+
+</body>
+
 </html>
