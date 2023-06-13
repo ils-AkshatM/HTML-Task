@@ -59,23 +59,18 @@ body {
   
   .login-card input[type="text"],
   .login-card input[type="password"] {
-    width: 90%;
+    width: 100%;
     padding: 12px;
     margin-bottom: 25px;
     border: 1px solid #ccc;
     border-radius: 25px;
   }
   
-  .login-card input[type="text"]::placeholder,
-  .login-card input[type="password"]::placeholder {
-    text-indent: 5px;
-  }
-  
   .login-card input[type="submit"] {
     background-color: #FE077C;
     width: 100%;
     color: white;
-    padding: 10px 20px;
+    padding: 12px;
     border: none;
     border-radius: 25px;
     cursor: pointer;

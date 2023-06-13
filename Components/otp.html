@@ -4,22 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Resources/css/otp.css">
     <title>OTP Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="header">
-        <img src="../Resources/assets/UEP copy.png" alt="Logo">
+<body class="bg-gray-200">
+    <div class="header bg-gradient-to-r from-black to-gray-900 text-white py-4 text-center">
+        <img src="../Resources/assets/UEP copy.png" alt="Logo" class="w-52 h-auto mx-auto">
     </div>
-    <div class="subheader"></div>
-    <div class="container">
-        <div class="card">
-            <h2>OTP Verification</h2>
-            <p>Please enter the OTP sent to your email</p>
-            <form id="otpForm" onsubmit="handleFormSubmit(event)">
-                <input type="text" name="otp" id="otpInput" placeholder="OTP" required><br>
-                <input type="submit" value="Verify OTP">
-            </form>
+    <div class="subheader bg-pink-500 h-2"></div>
+    <div class="flex items-center justify-center h-screen">
+        <div class="w-full max-w-md p-8">
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <h2 class="text-3xl mb-4 font-bold text-center">Please Enter OTP</h2>
+                <p class="text-center mb-6">Please enter the one time password we sent on your email uepadmin@uep.com (change)</p>
+                <form id="otpForm" onsubmit="handleFormSubmit(event)">
+                    <div class="mb-6">
+                        <input type="text" name="otp" id="otpInput" placeholder="OTP" required
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500">
+                    </div>
+                    <button type="submit"
+                        class="w-full bg-pink-500 text-white px-4 py-2 rounded-lg font-bold cursor-pointer transition-colors duration-300 hover:bg-pink-600">
+                        Verify OTP
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -28,7 +36,7 @@
             event.preventDefault();
 
             const otp = document.getElementById("otpInput").value;
-            const correctOTP = "123456"; // Define the correct OTP here
+            const correctOTP = "1234"; // Define the correct OTP here
 
             if (otp === correctOTP) {
                 // Redirect to the update password page
