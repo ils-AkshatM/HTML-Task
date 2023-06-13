@@ -12,11 +12,15 @@
         <img src="../Resources/assets/UEP copy.png" alt="Logo" class="w-52 h-auto mx-auto">
     </div>
     <div class="subheader bg-pink-500 h-2"></div>
-    <div class="flex items-center justify-center h-screen">
+    <div class="flex items-center justify-center min-h-screen">
         <div class="w-full max-w-md p-8">
             <div class="bg-white rounded-lg shadow-md p-8">
                 <h2 class="text-3xl mb-4 font-bold text-center">Please Enter OTP</h2>
-                <p class="text-center mb-6">Please enter the one time password we sent on your email uepadmin@uep.com (change)</p>
+                <p class="text-center mb-6">
+                    Please enter the one-time password we sent to:
+                    <span id="emailPlaceholder">uepadmin@uep.com</span>
+                    (<button class="underline text-blue-500" onclick="changeEmail()">Change</button>)
+                </p>
                 <form id="otpForm" onsubmit="handleFormSubmit(event)">
                     <div class="mb-6">
                         <input type="text" name="otp" id="otpInput" placeholder="OTP" required
@@ -27,6 +31,10 @@
                         Verify OTP
                     </button>
                 </form>
+                <div class="flex flex-col sm:flex-row justify-between mt-4">
+                    <button class="text-blue-500 underline mb-2 sm:mb-0" onclick="goBack()">Go Back</button>
+                    <button class="text-blue-500 underline" onclick="resendOTP()">Resend OTP</button>
+                </div>
             </div>
         </div>
     </div>
@@ -44,6 +52,22 @@
             } else {
                 alert("Incorrect OTP. Please enter the correct OTP.");
             }
+        }
+
+        function changeEmail() {
+            const newEmail = prompt("Enter your new email:");
+            if (newEmail) {
+                document.getElementById("emailPlaceholder").textContent = newEmail;
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function resendOTP() {
+            // Logic to resend the OTP
+            alert("OTP Resent!");
         }
     </script>
 </body>
