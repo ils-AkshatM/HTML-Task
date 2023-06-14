@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-eGc5wxCySTX1rxI6kOyGxP1SF6+st9L8kZKPOQ7eXrFOOPbPkKJIK1zii6cgw+Jf" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"></script>
@@ -93,7 +94,7 @@
                 border-left-width: 4px;
                 border-left-color: #FE077C;
                 /* padding-left: 5px; */
-                font-weight: bold;
+                font-weight: 500;
                 /* margin-left: 8px; */
 }
 
@@ -125,23 +126,23 @@
     </script>
 </head>
 
-<body class="font-roboto bg-gray-100">
+<body class="font-roboto bg-gray-200">
     <nav class="bg-gradient-to-r from-gray-900 to-gray-700 py-6">
         <div class="mx-auto px-4 sm:px-14 lg:px-36">
             <div class="flex justify-between items-center">
                 <div id="hamburger" class="flex items-center">
                     <img class="h-12 w-auto" src="../Resources/assets/UEP copy.png" alt="Logo" />
                 </div>
-                <div class="flex gap-2 items-center ml-14 sm:ml-8 cursor-pointer">
+                <div class="flex gap-2 items-center ml-14 sm:ml-8 cursor-pointer relative">
                     <div class="border-r border-gray-200 h-6"></div>
                     <div class="notification-icon mr-2" id="notificationIcon" onclick="toggleNotification(event)">
                         <img src="../Resources/assets/Notification.png" alt="Notification Icon" class="w-auto ml-4 mr-4" />
                     </div>
                     <div class="border-r border-gray-200 h-6"></div>
-                    <div class="absolute right-0 top-full mt-2 bg-white rounded-md shadow-md hidden" id="notificationContent">
-                        <a href="./updatepassword.html" class="block py-2 px-4 text-gray-800 text-sm">Update Profile</a>
+                    <div class="absolute top-full mt-2 bg-white rounded-md shadow-md hidden" id="notificationContent">
+                        <a href="#" class="block py-2 px-4 text-gray-800 text-sm">Notification</a>
                         <hr class="my-2">
-                        <a href="../index.html" onclick="handleLogout()" class="block py-2 px-4 text-gray-800 text-sm">Logout</a>
+                        <a href="#" class="block py-2 px-4 text-gray-800 text-sm">Notification2</a>
                     </div>
                     <script>
                         function toggleNotification(event) {
@@ -165,37 +166,39 @@
                         };
                     </script>
         
-                    <div class="relative">
-                        <div class="flex items-center cursor-pointer" onclick="toggleDropdown(event)">
-                            <img src="../Resources/assets/Oval.png" alt="Profile Image" class="dropbtn h-8 w-auto ml-2" />
-                            <div class="ml-4">
-                                <p class="text-sm text-white font-bold">Akshat Maheshwari</p>
-                                <p class="text-xs text-gray-400">Admin</p>
-                            </div>
-                            <!-- <svg class="h-4 w-4 -ml-4 text-gray-400 transform transition-transform" viewBox="0 0 20 20" fill="currentColor" x-bind:class="{ 'rotate-180': isOpen }">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M10 3.5a1 1 0 01.707.293l4 4a1 1 0 01-1.414 1.414L10 6.414 6.707 9.707a1 1 0 11-1.414-1.414l4-4A1 1 0 0110 3.5z" />
-                            </svg> -->
-                        </div>
-                        <div class="absolute right-0 top-full mt-2 bg-white rounded-md shadow-md hidden" id="dropdownContent">
-                            <a href="./updatepassword.html" class="block py-2 px-4 text-gray-800 text-sm">Update Profile</a>
-                            <hr class="my-2">
-                            <a href="../index.html" onclick="handleLogout()" class="block py-2 px-4 text-gray-800 text-sm">Logout</a>
-                        </div>
-                        <script>
-                            function toggleDropdown(event) {
-                                event.stopPropagation();
-                                var dropdownContent = document.getElementById("dropdownContent");
-                                dropdownContent.classList.toggle("hidden");
-                            }
-
-                            window.onclick = function(event) {
-                            var dropdownContent = document.getElementById("dropdownContent");
-                            if (event.target !== dropdownContent && !dropdownContent.contains(event.target)) {
-                            dropdownContent.classList.add("hidden");
-                            }
-                        }
-                        </script>
-                    </div>
+        <div class="relative">
+            <div class="flex items-center cursor-pointer" onclick="toggleDropdown(event)">
+                <img src="../Resources/assets/Oval.png" alt="Profile Image" class="dropbtn h-8 w-auto ml-2" />
+                <div class="ml-4">
+                    <p class="text-sm text-white font-bold">Chris Gayle</p>
+                    <p class="text-xs text-gray-400">Admin</p>
+                </div>
+                <span class="ml-2">
+                    <i class="ri-arrow-down-s-fill text-gray-400 transform transition-transform" x-bind:class="{ 'rotate-180': isOpen }"></i>
+                </span>
+            </div>
+            <div class="absolute right-0 top-full mt-2 bg-white rounded-md shadow-md hidden" id="dropdownContent">
+                <a href="./updatepassword.html" class="block py-2 px-4 text-gray-800 text-sm">Update Profile</a>
+                <hr class="my-2">
+                <a href="../index.html" onclick="handleLogout()" class="block py-2 px-4 text-gray-800 text-sm">Logout</a>
+            </div>
+            <script>
+                function toggleDropdown(event) {
+                    event.stopPropagation();
+                    var dropdownContent = document.getElementById("dropdownContent");
+                    dropdownContent.classList.toggle("hidden");
+                }
+        
+                window.onclick = function(event) {
+                    var dropdownContent = document.getElementById("dropdownContent");
+                    if (event.target !== dropdownContent && !dropdownContent.contains(event.target)) {
+                        dropdownContent.classList.add("hidden");
+                    }
+                }
+            </script>
+        </div>
+        
+        
                 </div>
             </div>
         </div>
@@ -203,7 +206,7 @@
     
         
     <div class="flex">
-        <div class="hidden lg:flex w-[300px] custom-shadow pr-5">
+        <div class="hidden lg:flex w-[300px] custom-shadow pr-5 h-screen bg-white bg-no-repeat bg-[#FFFFFF] bg-opacity-100 shadow-md">
             <div class="p-6">
                 <ul class="pt-10 flex flex-col gap-2">
                     <li class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-normal py-2 text-[18px] active">
@@ -242,11 +245,11 @@
             </div>
         </div>
         
-        <div id="sidebarSmall" class=" fixed top-16 h-screen w-1/2 md:w-2/5 bg-gray-200 hidden lg:hidden">
+        <div id="sidebarSmall" class="fixed top-16 h-screen w-1/2 md:w-2/5 bg-gray-200 hidden lg:hidden bg-[#FFFFFF] bg-opacity-100 shadow-md">
             <div>
                 <ul class="pt-10 flex flex-col gap-2">
                     <li
-                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-normal py-2 text-[18px]">
+                        class="flex gap-2 items-center hover:text-pink-500 hover:border-l-4 hover:border-pink-500 hover:pl-3 pl-4 font-normal py-2 text-[18px] active">
                         <i class="ri-home-4-fill"></i><a href="./dashboard.html">Reports</a>
                     </li>
                     <li
@@ -280,29 +283,29 @@
                 </ul>
             </div>
         </div>
-        <div class="w-full custom-bg flex flex-col gap-4 lg:pl-8 lg:py-4 p-4">
+        <div class="w-full flex flex-col gap-4 lg:pl-8 lg:py-4 p-4">
             <div class="flex flex-col gap-2">
                 <h2 class="text-[32px] text-[#202020] font-medium">Reports</h2>
                 <div class="grid grid-cols-2 gap-2 lg:flex lg:gap-5 lg:pr-20">
                     <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
                         <h2 class="lg:text-3xl text-[#202020] font-medium">13,000</h2>
-                        <p class="lg:text-lg text-[#202020] font-regular">Total Customers</p>
+                        <p class="lg:text-lg text-[#202020] font-normal">Total Customers</p>
                     </div>
                     <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
                         <h2 class="lg:text-3xl text-[#202020] font-medium">40M</h2>
-                        <p class="lg:text-lg text-[#202020] font-regular">Images Downloaded</p>
+                        <p class="lg:text-lg text-[#202020] font-normal">Images Downloaded</p>
                     </div>
                     <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
                         <h2 class="lg:text-3xl text-[#202020] font-medium">10M</h2>
-                        <p class="lg:text-lg text-[#202020] font-regular">Videos Downloaded</p>
+                        <p class="lg:text-lg text-[#202020] font-normal">Videos Downloaded</p>
                     </div>
                     <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
                         <h2 class="lg:text-3xl text-[#202020] font-medium">1200</h2>
-                        <p class="lg:text-lg text-[#202020] font-regular">Event Created</p>
+                        <p class="lg:text-lg text-[#202020] font-normal">Event Created</p>
                     </div>
                     <div class="lg:flex-1 bg-white py-5 px-6 rounded custom-card">
                         <h2 class="lg:text-3xl text-[#202020] font-medium">150</h2>
-                        <p class="lg:text-lg text-[#202020] font-regular">Sales Report Count</p>
+                        <p class="lg:text-lg text-[#202020] font-normal">Sales Report Count</p>
                     </div>
                 </div>
             </div>
@@ -325,7 +328,7 @@
                             'Sparkling Nights',
                             ],
                             datasets: [{
-                            data: [120,120,120],
+                            data: [591,480,412],
                             label: 'My First Dataset',
                             backgroundColor: [
                             '#6EB1E1',
@@ -355,15 +358,16 @@
                             legend: {
                             labels: {
                             fontSize: 20, 
-                            fontColor: 'blue'
+                            fontColor: 'white'
                             },
                             },
                             
                             labels: {
                             render: (args) => {
-                            return args.value + ' mb';
+                            return args.value + ' views';
                             },
                             fontSize: 14,
+                            fontColor: 'white',
                             position: 'inside',
                             textMargin: txt_margin,
                             },
@@ -406,175 +410,184 @@
                             });
                             
                             
-                            
-                            
                                 </script>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-4 lg:w-1/2">
-                        <div class="bg-white py-5 px-6 rounded shadow-md">
-                            <h3 class="font-bold">All Downloads</h3>
-                            <canvas id="myChart"></canvas>
-                            <script>
-                                // Create a line chart
-                                var ctx = document.getElementById('myChart').getContext('2d');
-                                var myChart = new Chart(ctx, {
+                    <div class="lg:w-1/2">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white py-5 px-6 rounded shadow-md">
+                                <h3 class="font-semibold mb-2">All Downloads</h3>
+                                <div class="chart-container">
+                                  <canvas id="myChart"></canvas>
+                                </div>
+                                <script>
+                                  // Create a line chart
+                                  var ctx = document.getElementById('myChart').getContext('2d');
+                                  var myChart = new Chart(ctx, {
                                     type: 'line',
                                     data: {
-                                        labels: ['Jan', 'Feb', 'Mar', 'Apr' ],
-                                        datasets: [{
-                                            label: 'Data',
-                                            data: [10, 15, 7, 12],
-                                            borderColor: '#FE077C',
-                                            fill: false,
-                                            tension: 0.5,
-                                        }]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true,
-                                                grid: {display:false},
-                                            },
-                                            x: {
-                                                grid: {display:false},
-                                            } 
-                                        },
-                                        plugins: {
-                                            datalabels: {
-                                                display:false,                                           }
-                                        },   
-                                        legends: {
-                                            display: false,
-                                        }
-                                    }
-
-                                });
-                            </script>
-                        </div>
-                        <div class="bg-white py-5 px-6 rounded shadow-md">
-                            <h3 class="font-bold">Image Downloads</h3>
-                            <canvas id="myChart1"></canvas>
-                            <script>
-                                // Create a line chart
-                                var ctx = document.getElementById('myChart1').getContext('2d');
-                                var myChart = new Chart(ctx, {
-                                    type: 'line',
-                                    data: {
-                                        labels: ['Jan', 'Feb', 'Mar', 'Apr' ],
-                                        datasets: [{
-                                            label: 'Data',
-                                            data: [10, 15, 7, 12],
-                                            borderColor: '#FE077C',
-                                            fill: false,
-                                            tension: 0.5,
-                                        }]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true,
-                                                grid: {display:false},
-                                            },
-                                            x: {
-                                                grid: {display:false},
-                                            } 
-                                        },
-                                        plugins: {
-                                            datalabels: {
-                                                display:false,                                           }
-                                        },   
-                                        legends: {
-                                            display: false,
-                                        }
-                                    }
-
-                                });
-                            </script>
-                        </div>
-                        <div class="bg-white py-5 px-6 rounded shadow-md">
-                            <h3 class="font-bold">Video Downloads</h3>
-                            <canvas id="myChart2"></canvas>
-                            <script>
-                                // Create a line chart
-                                var ctx = document.getElementById('myChart2').getContext('2d');
-                                var myChart = new Chart(ctx, {
-                                    type: 'line',
-                                    data: {
-                                        labels: ['Jan', 'Feb', 'Mar', 'Apr' ],
-                                        datasets: [{
-                                            label: 'Data',
-                                            data: [10, 15, 7, 12],
-                                            borderColor: '#FE077C',
-                                            fill: false,
-                                            tension: 0.5,
-                                        }]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true,
-                                                grid: {display:false},
-                                            },
-                                            x: {
-                                                grid: {display:false},
-                                            } 
-                                        },
-                                        plugins: {
-                                            datalabels: {
-                                                display:false,                                           }
-                                        },   
-                                        legends: {
-                                            display: false,
-                                        }
-                                    }
-
-                                });
-                            </script>
-                        </div>
-                        <div class="bg-white py-5 px-6 rounded border border-gray-300 shadow-md">
-                          <h3 class="font-bold">Event Creation</h3>
-                          <canvas id="myChart3"></canvas>
-                          <script>
-                              // Create a line chart
-                              var ctx = document.getElementById('myChart3').getContext('2d');
-                              var myChart = new Chart(ctx, {
-                                  type: 'line',
-                                  data: {
-                                      labels: ['Jan', 'Feb', 'Mar', 'Apr' ],
+                                      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
                                       datasets: [{
-                                          label: 'Data',
-                                          data: [10, 17, 4, 1],
-                                          borderColor: '#FE077C',
-                                          fill: false,
-                                          tension: 0.5,
+                                        data: [10, 15, 7, 12],
+                                        borderColor: '#FE077C',
+                                        fill: false,
+                                        tension: 0.5,
                                       }]
-                                  },
-                                  options: {
+                                    },
+                                    options: {
                                       responsive: true,
+                                      maintainAspectRatio: false, // Added for responsiveness
                                       scales: {
-                                          y: {
-                                              beginAtZero: true,
-                                              grid: {display:false},
-                                          },
-                                          x: {
-                                              grid: {display:false},
-                                          } 
+                                        y: {
+                                          beginAtZero: true,
+                                          grid: { display: false },
+                                        },
+                                        x: {
+                                          grid: { display: false },
+                                        }
                                       },
                                       plugins: {
-                                          datalabels: {
-                                              display:false,                                           }
-                                      },   
-                                      legends: {
+                                        legend: { // Removed 's' from 'legends'
                                           display: false,
+                                        },
+                                        datalabels: {
+                                          display: false,
+                                        }
                                       }
-                                  }
-
-                              });
-                          </script>
+                                    }
+                                  });
+                                </script>
+                              </div>
+                            <div class="bg-white py-5 px-6 rounded shadow-md">
+                                <h3 class="font-semibold mb-2">Image Downloads</h3>
+                                <div class="chart-container">
+                                  <canvas id="myChart1"></canvas>
+                                </div>
+                                <script>
+                                  // Create a line chart
+                                  var ctx = document.getElementById('myChart1').getContext('2d');
+                                  var myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+                                      datasets: [{
+                                        data: [15, 11, 7, 12],
+                                        borderColor: '#FE077C',
+                                        fill: false,
+                                        tension: 0.5,
+                                      }]
+                                    },
+                                    options: {
+                                      responsive: true,
+                                      maintainAspectRatio: false, // Added for responsiveness
+                                      scales: {
+                                        y: {
+                                          beginAtZero: true,
+                                          grid: { display: false },
+                                        },
+                                        x: {
+                                          grid: { display: false },
+                                        }
+                                      },
+                                      plugins: {
+                                        legend: { // Removed 's' from 'legends'
+                                          display: false,
+                                        },
+                                        datalabels: {
+                                          display: false,
+                                        }
+                                      }
+                                    }
+                                  });
+                                </script>
+                              </div>
+                            <div class="bg-white py-5 px-6 rounded shadow-md">
+                                <h3 class="font-semibold mb-2">Video Downloads</h3>
+                                <div class="chart-container">
+                                  <canvas id="myChart2"></canvas>
+                                </div>
+                                <script>
+                                  // Create a line chart
+                                  var ctx = document.getElementById('myChart2').getContext('2d');
+                                  var myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+                                      datasets: [{
+                                        data: [5, 15, 7, 2],
+                                        borderColor: '#FE077C',
+                                        fill: false,
+                                        tension: 0.5,
+                                      }]
+                                    },
+                                    options: {
+                                      responsive: true,
+                                      maintainAspectRatio: false, // Added for responsiveness
+                                      scales: {
+                                        y: {
+                                          beginAtZero: true,
+                                          grid: { display: false },
+                                        },
+                                        x: {
+                                          grid: { display: false },
+                                        }
+                                      },
+                                      plugins: {
+                                        legend: { // Removed 's' from 'legends'
+                                          display: false,
+                                        },
+                                        datalabels: {
+                                          display: false,
+                                        }
+                                      }
+                                    }
+                                  });
+                                </script>
+                              </div>
+                            <div class="bg-white py-5 px-6 rounded shadow-md">
+                                <h3 class="font-semibold mb-2">Event Creation</h3>
+                                <div class="chart-container">
+                                  <canvas id="myChart3"></canvas>
+                                </div>
+                                <script>
+                                  // Create a line chart
+                                  var ctx = document.getElementById('myChart3').getContext('2d');
+                                  var myChart = new Chart(ctx, {
+                                    type: 'line',
+                                    data: {
+                                      labels: ['Jan', 'Feb', 'Mar', 'Apr'],
+                                      datasets: [{
+                                        data: [5, 15, 9, 3],
+                                        borderColor: '#FE077C',
+                                        fill: false,
+                                        tension: 0.5,
+                                      }]
+                                    },
+                                    options: {
+                                      responsive: true,
+                                      maintainAspectRatio: false, // Added for responsiveness
+                                      scales: {
+                                        y: {
+                                          beginAtZero: true,
+                                          grid: { display: false },
+                                        },
+                                        x: {
+                                          grid: { display: false },
+                                        }
+                                      },
+                                      plugins: {
+                                        legend: { // Removed 's' from 'legends'
+                                          display: false,
+                                        },
+                                        datalabels: {
+                                          display: false,
+                                        }
+                                      }
+                                    }
+                                  });
+                                </script>
+                              </div>
+                              
                         </div>
                     </div>
                 </div>
