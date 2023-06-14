@@ -35,37 +35,58 @@
             </button>
           </form>
       <script>
-        function validateEmail(email) {
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return emailRegex.test(email);
-        }
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
-        function validatePassword(password) {
-          const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
-          return passwordRegex.test(password);
-        }
+function validatePassword(password) {
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)[0-9a-zA-Z\W]{8,}$/;
+  return passwordRegex.test(password);
+}
 
-        function handleFormSubmit(event) {
-          event.preventDefault();
-          const email = document.getElementById("emailInput").value;
-          const password = document.getElementById("passwordInput").value;
+function handleFormSubmit(event) {
+  event.preventDefault();
+  const email = document.getElementById("emailInput").value;
+  const password = document.getElementById("passwordInput").value;
 
-          if (!validateEmail(email)) {
-            alert("Invalid email address.");
-            return;
-          }
+  // Clear previous error messages
+  clearErrorMessages();
 
-          if (!validatePassword(password)) {
-            alert("Invalid password. Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one digit.");
-            return;
-          }
+  // Perform validation
+  if (!validateEmail(email)) {
+    // Handle invalid email
+    displayErrorMessage("emailInput", "Invalid email");
+    return;
+  }
 
-          // Set the user as logged in (for demonstration purposes)
-          sessionStorage.setItem("isLoggedIn", true);
+  if (!validatePassword(password)) {
+    // Handle invalid password
+    displayErrorMessage("passwordInput", "Invalid password");
+    return;
+  }
+   // Set the user as logged in (for demonstration purposes)
+   sessionStorage.setItem("isLoggedIn", true);
 
-          // Redirect to the dashboard
-          window.location.href = "./Components/dashboard.html";
-        }
+// Redirect to the dashboard
+window.location.href = "./Components/dashboard.html";
+}
+
+
+function displayErrorMessage(inputId, message) {
+  const inputField = document.getElementById(inputId);
+  const errorElement = document.createElement("p");
+  errorElement.className = "error-message";
+  errorElement.textContent = message;
+  inputField.parentNode.appendChild(errorElement);
+}
+
+function clearErrorMessages() {
+  const errorMessages = document.getElementsByClassName("error-message");
+  while (errorMessages.length > 0) {
+    errorMessages[0].parentNode.removeChild(errorMessages[0]);
+  }
+}
 
         // Check if the user is already logged in
         function checkLoggedIn() {
