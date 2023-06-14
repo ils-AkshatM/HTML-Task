@@ -611,47 +611,48 @@ actions.appendChild(deleteIcon);
                       <!-- popup  -->
                       <!-- Modal Popup -->
                       <div id="popup" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-                          <div class="bg-white rounded shadow-md p-4 max-w-md" style="top: 128px; left: 572px; width: 777px; height: 522px;">
-                            <!-- Heading and Close Icon -->
-                            <div class="flex items-center justify-between">
-                              <h2 class="text-lg font-bold">Forest.Jpg</h2>
-                              <button onclick="closePopup()" class="text-gray-500 hover:text-gray-700">
-                                  <i class="ri-close-fill"></i>
-                              </button>
-                            </div>
-                        
-                            <!-- Image -->
-                            <img class="rounded-md mx-auto mt-4" src="https://picsum.photos/400/200" alt="Image">
-                        
-                            <!-- Breadcrumb and Icons -->
-                            <div class="flex items-center justify-between mt-4">
-                              <ul class="flex text-sm text-gray-700 font-medium items-center">
-                                <li><a href="#" class="text-blue-500 hover:text-blue-700">Events <span class="text-gray-500">></span></a></li>
-                                <li><a href="#" class="text-blue-500 hover:text-blue-700">Folders <span class="text-gray-500">></span></a></li>
-                                <li><a href="#" class="text-blue-500 hover:text-blue-700">Party Hub Pass <span class="text-gray-500">></span></a></li>
-                                <li class="text-gray-500">Event Decoration</li>
-                              </ul>
-                              <div class="flex items-center gap-2">
-                                <a href="#" class="text-gray-500 hover:text-gray-700"><i class="ri-download-2-fill"></i></a>
-                                <a href="#" class="text-gray-500 hover:text-gray-700"><i class="ri-delete-bin-7-fill"></i></i></a>
-                              </div>
-                            </div>
-                        
-                            <!-- Download Count and Product Count -->
-                            <p class="text-sm text-gray-700 mt-2">Download Count: 321 | Product Count: 100</p>
-                        
-                            <!-- Comment Heading and Content -->
-                            <h3 class="text-base font-bold mt-4">Comments</h3>
-                            <p class="text-sm text-gray-700 mt-2 leading-snug">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                              Sed suscipit purus sed augue ullamcorper, at cursus metus vestibulum.
-                              Fusce hendrerit ligula ac efficitur rutrum. Donec fringilla cursus felis, nec posuere turpis blandit at.
-                            </p>
-                        
-                            <!-- Creation Date -->
-                            <p class="text-sm text-gray-500 mt-4">Created on: May 29, 2023</p>
+                        <div class="bg-white rounded-xl shadow-md p-4 max-w-2xl" style="width: 100%;">
+                          <!-- Heading and Close Icon -->
+                          <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-bold">Forest.Jpg</h2>
+                            <button onclick="closePopup()" class="text-gray-500 hover:text-gray-700">
+                              <i class="ri-close-fill"></i>
+                            </button>
                           </div>
-                        </div>                       
+                      
+                          <!-- Image -->
+                          <img class="rounded-md mx-auto mt-4" src="https://picsum.photos/400/200" alt="Image">
+                      
+                          <!-- Breadcrumb and Icons -->
+                          <div class="flex items-center justify-between mt-4">
+                            <ul class="flex text-sm text-gray-700 font-medium items-center">
+                              <li><a href="#" class="text-blue-500 hover:text-blue-700">Events <span class="text-gray-500">></span></a></li>
+                              <li><a href="#" class="text-blue-500 hover:text-blue-700">Folders <span class="text-gray-500">></span></a></li>
+                              <li><a href="#" class="text-blue-500 hover:text-blue-700">Party Hub Pass <span class="text-gray-500">></span></a></li>
+                              <li class="text-gray-500">Event Decoration</li>
+                            </ul>
+                            <div class="flex items-center gap-2">
+                              <a href="#" class="text-gray-500 hover:text-gray-700"><i class="ri-download-2-fill"></i></a>
+                              <a href="#" class="text-gray-500 hover:text-gray-700"><i class="ri-delete-bin-7-fill"></i></a>
+                            </div>
+                          </div>
+                      
+                          <!-- Download Count and Product Count -->
+                          <p class="text-sm text-gray-700 mt-2">Download Count: 321 | Product Count: 100</p>
+                      
+                          <!-- Comment Heading and Content -->
+                          <h3 class="text-base font-bold mt-4">Comments</h3>
+                          <p class="text-sm text-gray-700 mt-2 leading-snug">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Sed suscipit purus sed augue ullamcorper, at cursus metus vestibulum.
+                            Fusce hendrerit ligula ac efficitur rutrum. Donec fringilla cursus felis, nec posuere turpis blandit at.
+                          </p>
+                      
+                          <!-- Creation Date -->
+                          <p class="text-sm text-gray-500 mt-4">Created on: May 29, 2023</p>
+                        </div>
+                      </div>
+                                          
                         <script>
                           function openPopup() {
                             var popup = document.getElementById("popup");
