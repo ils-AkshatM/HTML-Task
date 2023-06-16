@@ -97,7 +97,17 @@
                 font-weight: 500;
                 /* margin-left: 8px; */
 }
-
+/* pie chart  */
+@media (max-width: 320px) {
+  .med{
+    height: 210px !important;
+  }
+}
+@media (max-width: 425px) {
+  .med{
+    height: 250px !important;
+  }
+}
 
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -320,7 +330,7 @@
                 <h2 class="text-[28px] text-[#202020] font-medium mb-2">Visual Reports</h2>
 
                 <div class="grid grid-cols-1 lg:flex gap-4">
-                    <div class="lg:w-1/2">
+                    <div class="lg:w-1/2 med">
                         <div class="pie-chart w-full h-full">
                             <canvas id="pieChart"></canvas>
                           </div>                         
@@ -363,7 +373,7 @@
                             
                             legend: {
                             labels: {
-                            fontSize: 20, 
+                            fontSize: 16, 
                             fontColor: 'white'
                             },
                             },
@@ -372,7 +382,7 @@
                             render: (args) => {
                             return args.value + ' views';
                             },
-                            fontSize: 14,
+                            fontSize: 8,
                             fontColor: 'white',
                             position: 'inside',
                             textMargin: txt_margin,
